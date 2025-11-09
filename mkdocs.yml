@@ -1,0 +1,14 @@
+site_name: Food Recipe Web App
+# site_description: Documentation for the Food Recipe Web Application
+# site_author: Cia Sharma
+
+nav:
+  - Home: index.md
+  - Functional Document: functional_doc.md
+  - Business Use Case: business_use_case.md
+
+theme:
+  name: mkdocs
+
+plugins:
+  - mermaid2
