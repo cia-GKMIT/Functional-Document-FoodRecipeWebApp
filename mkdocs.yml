@@ -6,6 +6,7 @@ nav:
   - Home: index.md
   - Functional Document: functional_doc.md
   - Business Use Case: business_use_case.md
+  - Database Schema: database_schema.md
 
 theme:
   name: mkdocs
