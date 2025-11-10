@@ -94,3 +94,11 @@ erDiagram
     USER ||--o{ RECIPES : creates
 
 ```
+
+###  Compound Index (Title + CreatedBy)
+
+To prevent duplicate recipe titles for the same user, a **compound unique index** is added:
+
+```js
+recipeSchema.index({ title: 1, createdBy: 1 }, { unique: true });
+```
