@@ -53,45 +53,43 @@ Each collection is connected through **ObjectId references**, creating logical r
 ```mermaid
 erDiagram
  
-    ROLE {
-        Bigint Role_Id "unique"
-        String roleName "unique"
-        String description
+
+    FAVORITE {
+        ObjectId _id PK 
+        ObjectId user FK "ref: USERS"
+        ObjectId recipe FK "ref: RECIPES"
         Date createdAt
         Date updatedAt
+        Date deletedat
     }
 
-    ADMIN {
-        String email "unique"
-        String password
-        ObjectId role "ref: Role"
+    USERS {
+        ObjectId _id PK 
+        String email "required,unique"
+        String password "required"
+        ObjectId role 
         Date createdAt
         Date updatedAt
-    }
-
-    USER {
-        String email "unique"
-        String password
-        ObjectId role "ref: Role"
-        Date createdAt
-        Date updatedAt
+        Date deletedat
     }
 
     RECIPES {
-        String title
-        Array ingredients
-        String instructions
+        ObjectId _id PK 
+        String title "required"
+        Array ingredients "required"
+        String instructions "required"
         String time
         String coverImage
-        ObjectId createdBy "ref: User"
+        ObjectId createdBy FK "ref: USERS"
         Date createdAt
         Date updatedAt
+        Date deletedat
     }
 
-    ROLE ||--o{ ADMIN : assigns
-    ROLE ||--o{ USER : assigns
-    ADMIN ||--o{ USER : manages
-    USER ||--o{ RECIPES : creates
+    RECIPES }o--|| USERS : "createdBy"
+    FAVORITE }o--|| USERS : "user"
+    FAVORITE }o--|| RECIPES : "recipe"
+
 
 ```
 

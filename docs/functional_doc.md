@@ -37,6 +37,7 @@ flowchart LR
     A[User] -->|Registers, Logs In, Views Recipes| B[System Server]
     A -->|Creates, Updates, Deletes Recipes| B
     A -->|Marks Favorite Recipes or Customizes| B
+    A -->|Searches Recipes| B
     B -->|Handles Authentication using JWT and Image Uploads via Multer| C[(MongoDB Database)]
     B -->|Serves API Responses and Business Logic| D[React Frontend and PWA]
     D -->|Displays Recipes, Favorites, and Personalized Data| A
@@ -134,6 +135,15 @@ flowchart LR
 - **Output:** App usable offline.  
 - **Errors:** Cache failure or sync delay.
 
+---
+
+### FR-10: Searching Recipes
+- **Description:** Allows users to search for recipes by name or title.
+- **Inputs:**  Recipe name or title (string).
+- **Process:** User enters a keyword; the system searches stored recipe titles for matches.
+- **Output:** List of matching recipes with title, image, ingredients, and time.
+- **Errors:** 400 (missing input), 404 (no matches found).
+
 
 ## Non-Functional Requirements
 
@@ -201,12 +211,14 @@ flowchart TB
     P5[Mark Favorite Recipes]
     P6[Customize Favorite Recipes]
     P7[View All Recipes]
+    P8[search Recipes]
     
 
     %% Admin Permissions
     A --> P1
     A --> P2
     A --> P7
+    A --> P8
     
 
     %% Registered User Permissions
@@ -215,10 +227,9 @@ flowchart TB
     B --> P5
     B --> P6
     B --> P7
-    
+    B --> P8
 
     %% Guest User Permissions
     C --> P7
-    
-
+    C --> P8
 ```
