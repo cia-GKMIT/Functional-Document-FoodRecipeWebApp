@@ -42,6 +42,9 @@
 <li class="nav-item">
 <a class="nav-link" href="../database_schema/">Database Schema</a>
 </li>
+<li class="nav-item">
+<a class="nav-link" href="../technical_document/">Technical Document</a>
+</li>
 </ul>
 <ul class="nav navbar-nav ms-md-auto">
 <li class="nav-item">
@@ -377,13 +380,13 @@ flowchart TB
     P5[Mark Favorite Recipes]
     P6[Customize Favorite Recipes]
     P7[View All Recipes]
-    P8[Search Recipes]
+
 
     %% Admin Permissions
     A --&gt; P1
     A --&gt; P2
     A --&gt; P7
-    A --&gt; P8
+
 
     %% Registered User Permissions
     B --&gt; P3
@@ -391,11 +394,11 @@ flowchart TB
     B --&gt; P5
     B --&gt; P6
     B --&gt; P7
-    B --&gt; P8
+
 
     %% Guest User Permissions
     C --&gt; P7
-    C --&gt; P8
+
 
 </div></div>
 </div>
