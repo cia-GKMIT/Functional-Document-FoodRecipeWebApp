@@ -53,7 +53,6 @@ flowchart LR
 
 ## System Requirements
 
-
 ## Functional Requirements 
 
 ### FR-01: User Registration
@@ -202,13 +201,13 @@ flowchart TB
     P5[Mark Favorite Recipes]
     P6[Customize Favorite Recipes]
     P7[View All Recipes]
-    P8[Search Recipes]
+    
 
     %% Admin Permissions
     A --> P1
     A --> P2
     A --> P7
-    A --> P8
+    
 
     %% Registered User Permissions
     B --> P3
@@ -216,10 +215,10 @@ flowchart TB
     B --> P5
     B --> P6
     B --> P7
-    B --> P8
+    
 
     %% Guest User Permissions
     C --> P7
-    C --> P8
+    
 
 ```

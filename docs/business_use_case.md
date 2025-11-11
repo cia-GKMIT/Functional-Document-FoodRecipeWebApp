@@ -2,6 +2,7 @@
 
 ## Problem Statement
 Home cooks and food enthusiasts often struggle to:
+
 - Save and organize personal recipes digitally.
 - Edit and update recipes easily.
 - Access reliable, ingredient-based recipe searches.
@@ -10,7 +11,9 @@ Home cooks and food enthusiasts often struggle to:
 ---
 
 ## Proposed Solution
+
 This web app allows users to:
+
 - Create and manage their own digital recipe book.
 - Upload images, list ingredients, and write cooking steps.
 - Securely log in to store personal recipes.
@@ -40,17 +43,17 @@ This web app allows users to:
 
 ## Business Impact
 
-| Metric | Impact |
-|---------|--------|
-| User Engagement | Increased time spent on the app through interactive recipe creation. |
-| Data Insights | Ingredient trends useful for grocery and appliance brands. |
+| Metric                            | Impact                                                               |
+|-----------------------------------|----------------------------------------------------------------------|
+| **User Engagement**                  | Increased time spent on the app through interactive recipe creation. |
+| **Data Insights**                     | Ingredient trends useful for grocery and appliance brands.           |
 
 
 ---
 
 ## Competitive Advantage
 Unlike YouTube, which focuses on videos, this app emphasizes interactive recipe management.  
-Users can create, edit, and organize their own recipes — something YouTube doesn’t offer.  
+Users can create, edit, and organize their own recipes, something YouTube doesn’t offer.  
 It’s personalized, searchable, and private.
 
 ---
