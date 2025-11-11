@@ -14,3 +14,6 @@ theme:
 
 plugins:
   - mermaid2
+
+extra_css:
+  - stylesheets/custom.css

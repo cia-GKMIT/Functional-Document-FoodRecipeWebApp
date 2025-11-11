@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html data-bs-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>Technical Document - Food Recipe Web App</title>
+<link href="../css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../css/fontawesome.min.css" rel="stylesheet"/>
+<link href="../css/brands.min.css" rel="stylesheet"/>
+<link href="../css/solid.min.css" rel="stylesheet"/>
+<link href="../css/v4-font-face.min.css" rel="stylesheet"/>
+<link href="../css/base.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" id="hljs-light" rel="stylesheet"/>
+<link disabled="" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" id="hljs-dark" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body>
+<div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+<div class="container">
+<a class="navbar-brand" href="..">Food Recipe Web App</a>
+<!-- Expander button -->
+<button aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbar-collapse" data-bs-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<!-- Expanded navigation -->
+<div class="navbar-collapse collapse" id="navbar-collapse">
+<!-- Main navigation -->
+<ul class="nav navbar-nav">
+<li class="nav-item">
+<a class="nav-link" href="..">Home</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../functional_doc/">Functional Document</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../business_use_case/">Business Use Case</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../database_schema/">Database Schema</a>
+</li>
+<li class="nav-item">
+<a aria-current="page" class="nav-link active" href="./">Technical Document</a>
+</li>
+</ul>
+<ul class="nav navbar-nav ms-md-auto">
+<li class="nav-item">
+<a class="nav-link" href="../database_schema/" rel="prev">
+<i class="fa fa-arrow-left"></i> Previous
+                                </a>
+</li>
+<li class="nav-item">
+<a class="nav-link disabled" rel="next">
+                                    Next <i class="fa fa-arrow-right"></i>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+<div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+<div class="navbar-header">
+<button class="navbar-toggler collapsed" data-bs-target="#toc-collapse" data-bs-toggle="collapse" title="Table of Contents" type="button">
+<span class="fa fa-angle-down"></span>
+</button>
+</div>
+<div class="navbar-collapse collapse card bg-body-tertiary" id="toc-collapse">
+<ul class="nav flex-column">
+<li class="nav-item" data-bs-level="1"><a class="nav-link" href="#technical-documentation">Technical Documentation</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-bs-level="1"><a class="nav-link" href="#4-architecture-overview">4. Architecture Overview</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+</ul>
+</div>
+</div></div>
+<div class="col-md-9" role="main">
+<h1 id="technical-documentation">Technical Documentation</h1>
+<p>This section provides a detailed <strong>technical overview</strong> of the <strong>Food Recipe Web Application</strong>, focusing on its <strong>AWS architecture</strong>, <strong>data flow</strong>, <strong>authentication and authorization</strong>, and <strong>tech stack choices</strong>.<br/>
+It extends the documentation created on <strong>Day 2</strong>, ensuring a complete understanding of both design and implementation.</p>
+<h1 id="4-architecture-overview">4.  Architecture Overview</h1>
+<p>The application follows a <strong>MERN stack deployment model</strong> on AWS infrastructure.<br/>
+User requests are routed through <strong>Route 53 (DNS)</strong> to the EC2 instance via an <strong>Elastic IP</strong>, where NGINX handles request forwarding, SSL termination, and static file serving.<br/>
+The backend is managed using <strong>PM2</strong>, ensuring process stability, while persistent data is stored securely in <strong>MongoDB Atlas (Free M0 cluster)</strong>.</p>
+<hr/>
+<!-- ## 4.1 AWS Deployment Diagram
+
+```mermaid
+flowchart TD
+    %% --- User Layer ---
+    A[Internet Users<br>(Browser Requests)]
+
+    %% --- DNS Layer ---
+    A -->
+<p>|Access yourdomain.com| B[Route 53 (DNS)]
+    B --&gt;|Resolves to Elastic IP (1.2.3.4)| C[AWS EC2 Instance<br/>(t2.micro - Free Tier)]</p>
+<pre><code>%% --- EC2 Infrastructure ---
+subgraph C[AWS EC2 Instance&lt;br&gt;Elastic IP: 1.2.3.4]
+    direction TB
+
+    %% --- Web Server Layer ---
+    subgraph N[NGINX&lt;br&gt;Port 80 / 443]
+        N1[• Reverse Proxy&lt;br&gt;• SSL/TLS Termination&lt;br&gt;• Static &amp; Image File Serving]
+    end
+
+    %% --- Application Layer ---
+    N --&gt; F[Frontend (React Build)&lt;br&gt;Route: /&lt;br&gt;Served from dist/]
+    N --&gt; B[Backend (Node.js + Express)&lt;br&gt;Route: /api&lt;br&gt;Port: 5000]
+
+    %% --- File Upload Layer ---
+    B --&gt; U[Multer File Uploads&lt;br&gt;/backend/public/images&lt;br&gt;Stored Recipe Images]
+    U --&gt;|Served via /images/| N
+
+    %% --- Process Management ---
+    B --&gt; P[PM2 Process Manager&lt;br&gt;Auto-Restart + Monitoring]
+end
+
+%% --- External Services ---
+C --&gt; D[(MongoDB Atlas&lt;br&gt;Free M0 Cluster - 512MB)]
+C --&gt; CW[(Optional: AWS CloudWatch&lt;br&gt;Logs &amp; Metrics)]
+</code></pre>
+<p>``` --&gt;</p></div>
+</div>
+</div>
+<footer class="col-md-12">
+<hr/>
+<p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+</footer>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+<script src="../js/base.js"></script>
+<div aria-hidden="true" aria-labelledby="keyboardModalLabel" class="modal" id="mkdocs_keyboard_modal" role="dialog" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body">
+<table class="table">
+<thead>
+<tr>
+<th style="width: 20%;">Keys</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="help shortcut"><kbd>?</kbd></td>
+<td>Open this help</td>
+</tr>
+<tr>
+<td class="next shortcut"><kbd>n</kbd></td>
+<td>Next page</td>
+</tr>
+<tr>
+<td class="prev shortcut"><kbd>p</kbd></td>
+<td>Previous page</td>
+</tr>
+<tr>
+<td class="search shortcut"><kbd>s</kbd></td>
+<td>Search</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="modal-footer">
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

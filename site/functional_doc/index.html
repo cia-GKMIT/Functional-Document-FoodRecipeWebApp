@@ -42,6 +42,9 @@
 <li class="nav-item">
 <a class="nav-link" href="../database_schema/">Database Schema</a>
 </li>
+<li class="nav-item">
+<a class="nav-link" href="../technical_document/">Technical Document</a>
+</li>
 </ul>
 <ul class="nav navbar-nav ms-md-auto">
 <li class="nav-item">
@@ -186,6 +189,7 @@ It solves the real-world problem of disorganized recipe storage and lack of pers
     A[User] --&gt;|Registers, Logs In, Views Recipes| B[System Server]
     A --&gt;|Creates, Updates, Deletes Recipes| B
     A --&gt;|Marks Favorite Recipes or Customizes| B
+    A --&gt;|Searches Recipes| B
     B --&gt;|Handles Authentication using JWT and Image Uploads via Multer| C[(MongoDB Database)]
     B --&gt;|Serves API Responses and Business Logic| D[React Frontend and PWA]
     D --&gt;|Displays Recipes, Favorites, and Personalized Data| A
@@ -280,6 +284,15 @@ It solves the real-world problem of disorganized recipe storage and lack of pers
 <li><strong>Process:</strong> Register service worker and cache assets.  </li>
 <li><strong>Output:</strong> App usable offline.  </li>
 <li><strong>Errors:</strong> Cache failure or sync delay.</li>
+</ul>
+<hr/>
+<h3 id="fr-10-searching-recipes">FR-10: Searching Recipes</h3>
+<ul>
+<li><strong>Description:</strong> Allows users to search for recipes by name or title.</li>
+<li><strong>Inputs:</strong>  Recipe name or title (string).</li>
+<li><strong>Process:</strong> User enters a keyword; the system searches stored recipe titles for matches.</li>
+<li><strong>Output:</strong> List of matching recipes with title, image, ingredients, and time.</li>
+<li><strong>Errors:</strong> 400 (missing input), 404 (no matches found).</li>
 </ul>
 <h2 id="non-functional-requirements">Non-Functional Requirements</h2>
 <h3 id="nfr-01-security">NFR-01: Security</h3>
@@ -377,13 +390,15 @@ flowchart TB
     P5[Mark Favorite Recipes]
     P6[Customize Favorite Recipes]
     P7[View All Recipes]
-    P8[Search Recipes]
+    P8[search Recipes]
+
 
     %% Admin Permissions
     A --&gt; P1
     A --&gt; P2
     A --&gt; P7
     A --&gt; P8
+
 
     %% Registered User Permissions
     B --&gt; P3
@@ -396,7 +411,6 @@ flowchart TB
     %% Guest User Permissions
     C --&gt; P7
     C --&gt; P8
-
 </div></div>
 </div>
 </div>
