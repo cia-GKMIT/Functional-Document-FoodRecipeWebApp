@@ -123,13 +123,37 @@ The routes are grouped by functional modules: **Auth/User**, **Recipes**, **Stat
 The project follows a minimal and efficient testing approach focusing on verifying key logic and API endpoints.  
 This setup uses **Jest** for automated testing and **Postman** for manual API validation.
 
----
-
-## Overview
 
 | **Testing Area** | **Framework / Tool** | **Purpose** | **Type of Testing** | **Execution Mode** |
 |:--|:--|:--|:--|:--|
 | **Backend & Frontend Logic** | **Jest** | Validate backend controllers, database operations, and utility functions. | Unit / Integration | Automated |
 | **API Endpoints** | **Postman** | Verify API routes such as `/login`, `/signUp`, `/recipe`, and `/favorite`. | Functional / Manual | Manual runs using Postman GUI |
+
+---
+
+# Tech Stack
+
+The **Food Recipe Web App** is a full-stack MERN (MongoDB, Express.js, React, Node.js) project designed for recipe management, authentication, and image handling.  
+The table below lists all major technologies and their specific roles.
+
+---
+
+| **Layer** | **Technology / Service** | **Purpose** | **Category** |
+|:--|:--|:--|:--|
+| **Frontend** | **React.js + Vite** | Build fast, responsive, and modular user interfaces. | Framework |
+|  | **PWA (Progressive Web App)** | Enable offline use and “Add to Home Screen” functionality. | Enhancement |
+| **Backend** | **Node.js** | Runtime environment for server-side logic. | Runtime |
+|  | **Express.js** | Lightweight web framework to manage routes and APIs. | Framework |
+|  | **Multer** | Handle file uploads (recipe images). | Middleware |
+|  | **bcrypt** | Secure password hashing before storage. | Security |
+|  | **JWT (JSON Web Token)** | User authentication and authorization. | Security |
+| **Database** | **MongoDB Atlas** | Store user data, recipes, and favorites in the cloud. | Database |
+| **Cloud & Deployment** | **AWS EC2** | Host backend server and APIs. | Cloud Compute |
+|  | **AWS S3** | Store uploaded images securely and serve them globally. | Cloud Storage |
+|  | **AWS Route 53** | Manage custom domain and DNS routing. | Cloud DNS |
+|  | **GitHub Pages** | Deploy documentation and static assets. | Hosting |
+| **Testing & Validation** | **Jest** | Unit and integration testing for logic validation. | Testing |
+|  | **Postman** | Manual API testing and verification. | Testing |
+| **Version Control** | **Git & GitHub** | Track versions and collaborate on code. | DevOps |
 
 ---
