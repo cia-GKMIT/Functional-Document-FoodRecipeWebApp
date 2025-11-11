@@ -1,0 +1,24 @@
+/* ---- Show borders for all Markdown tables (Default MkDocs theme) ---- */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+
+table th,
+table td {
+  border: 1px solid rgba(0, 0, 0, 0.4) !important;
+  padding: 8px 12px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+table th {
+  background-color: rgba(0, 0, 0, 0.05);
+  font-weight: 600;
+}
+
+table tr:hover td {
+  background-color: rgba(0, 0, 0, 0.03);
+}

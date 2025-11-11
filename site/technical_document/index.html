@@ -15,6 +15,7 @@
 <link href="../css/base.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" id="hljs-light" rel="stylesheet"/>
 <link disabled="" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" id="hljs-dark" rel="stylesheet"/>
+<link href="../stylesheets/custom.css" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
 </head>
@@ -71,63 +72,299 @@
 </div>
 <div class="navbar-collapse collapse card bg-body-tertiary" id="toc-collapse">
 <ul class="nav flex-column">
-<li class="nav-item" data-bs-level="1"><a class="nav-link" href="#technical-documentation">Technical Documentation</a>
+<li class="nav-item" data-bs-level="1"><a class="nav-link" href="#system-architecture-data-flow">System Architecture &amp; Data Flow</a>
+<ul class="nav flex-column">
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#aws-deployment-architecture">AWS Deployment Architecture</a>
 <ul class="nav flex-column">
 </ul>
 </li>
-<li class="nav-item" data-bs-level="1"><a class="nav-link" href="#4-architecture-overview">4. Architecture Overview</a>
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#data-flow-diagram-dfd">Data Flow Diagram (DFD)</a>
 <ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#login-process-sequence-diagram">Login Process — Sequence Diagram</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+</ul>
+</li>
+<li class="nav-item" data-bs-level="1"><a class="nav-link" href="#api-reference">API Reference</a>
+<ul class="nav flex-column">
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#auth-user">Auth / User</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#recipes">Recipes</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#static-assets">Static Assets</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#favorites-server-side-persistence">Favorites (Server-Side Persistence)</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#notes">Notes</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+</ul>
+</li>
+<li class="nav-item" data-bs-level="1"><a class="nav-link" href="#testing-frameworks">Testing Frameworks</a>
+<ul class="nav flex-column">
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#overview">Overview</a>
+<ul class="nav flex-column">
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </div>
 </div></div>
 <div class="col-md-9" role="main">
-<h1 id="technical-documentation">Technical Documentation</h1>
-<p>This section provides a detailed <strong>technical overview</strong> of the <strong>Food Recipe Web Application</strong>, focusing on its <strong>AWS architecture</strong>, <strong>data flow</strong>, <strong>authentication and authorization</strong>, and <strong>tech stack choices</strong>.<br/>
-It extends the documentation created on <strong>Day 2</strong>, ensuring a complete understanding of both design and implementation.</p>
-<h1 id="4-architecture-overview">4.  Architecture Overview</h1>
-<p>The application follows a <strong>MERN stack deployment model</strong> on AWS infrastructure.<br/>
-User requests are routed through <strong>Route 53 (DNS)</strong> to the EC2 instance via an <strong>Elastic IP</strong>, where NGINX handles request forwarding, SSL termination, and static file serving.<br/>
-The backend is managed using <strong>PM2</strong>, ensuring process stability, while persistent data is stored securely in <strong>MongoDB Atlas (Free M0 cluster)</strong>.</p>
+<h1 id="system-architecture-data-flow">System Architecture &amp; Data Flow</h1>
+<p>This section explains the overall system setup and internal data movement in the project.</p>
 <hr/>
-<!-- ## 4.1 AWS Deployment Diagram
-
-```mermaid
-flowchart TD
-    %% --- User Layer ---
-    A[Internet Users<br>(Browser Requests)]
-
-    %% --- DNS Layer ---
-    A -->
-<p>|Access yourdomain.com| B[Route 53 (DNS)]
-    B --&gt;|Resolves to Elastic IP (1.2.3.4)| C[AWS EC2 Instance<br/>(t2.micro - Free Tier)]</p>
-<pre><code>%% --- EC2 Infrastructure ---
-subgraph C[AWS EC2 Instance&lt;br&gt;Elastic IP: 1.2.3.4]
-    direction TB
-
-    %% --- Web Server Layer ---
-    subgraph N[NGINX&lt;br&gt;Port 80 / 443]
-        N1[• Reverse Proxy&lt;br&gt;• SSL/TLS Termination&lt;br&gt;• Static &amp; Image File Serving]
+<h3 id="explanation">Explanation</h3>
+<ul>
+<li><strong>Route 53</strong>: Provides the custom domain and DNS routing for the application.  </li>
+<li><strong>EC2 Instance</strong>: Hosts the Node.js + Express backend service that manages API requests and business logic.  </li>
+<li><strong>S3 Bucket</strong>:  </li>
+<li>Serves static frontend files built from React + Vite.  </li>
+<li>Stores uploaded recipe images and other media assets.  </li>
+<li><strong>MongoDB Atlas</strong>: Cloud-hosted NoSQL database used to persist user accounts, recipes, and favorites.  </li>
+<li><strong>Security</strong>:  </li>
+<li>All API calls are served over HTTPS through Route 53-managed SSL.  </li>
+<li>JWT tokens secure authentication across sessions.</li>
+</ul>
+<p>This setup ensures high availability, scalability, and separation of concerns between static hosting, compute, and storage.</p>
+<hr/>
+<h2 id="aws-deployment-architecture">AWS Deployment Architecture</h2>
+<p>Below is the structure showing how the application is deployed using AWS services.</p>
+<p><img alt="AWS Deployment Structure" src="../AWS%20architecture.png"/></p>
+<hr/>
+<h2 id="data-flow-diagram-dfd">Data Flow Diagram (DFD)</h2>
+<p>The DFD illustrates how data moves across the system — from users to the database and backend processes.</p>
+<p><img alt="System DFD" src="../Blank%20diagram.png"/></p>
+<blockquote>
+<p><em>Note: This is a simplified Level-1 DFD representing the major data movement.</em></p>
+</blockquote>
+<h3 id="explanation_1">Explanation</h3>
+<ol>
+<li><strong>User Interaction</strong> – A user accesses the application through a browser or installed PWA.  </li>
+<li><strong>Frontend Request</strong> – The React interface communicates with the backend via REST APIs.  </li>
+<li><strong>Backend Processing</strong> – The Node.js + Express server validates inputs, handles business logic, and manages authentication.  </li>
+<li><strong>Database Operations</strong> – MongoDB Atlas stores or retrieves recipe and user data as requested.  </li>
+<li><strong>Response Delivery</strong> – The backend sends structured JSON responses to the frontend, which updates the UI accordingly.</li>
+</ol>
+<hr/>
+<h2 id="login-process-sequence-diagram">Login Process — Sequence Diagram</h2>
+<p>This diagram represents the login and signup process in a compact, visual form.</p>
+<div class="mermaid">sequenceDiagram
+    User -&gt;&gt; App: Signup or Login
+    App -&gt;&gt; Database: Check or save user details
+    Database --&gt;&gt; App: Send result
+    alt Correct password
+        App -&gt;&gt; User: Access granted
+    else Wrong password
+        App -&gt;&gt; User: Show "Wrong password"
     end
-
-    %% --- Application Layer ---
-    N --&gt; F[Frontend (React Build)&lt;br&gt;Route: /&lt;br&gt;Served from dist/]
-    N --&gt; B[Backend (Node.js + Express)&lt;br&gt;Route: /api&lt;br&gt;Port: 5000]
-
-    %% --- File Upload Layer ---
-    B --&gt; U[Multer File Uploads&lt;br&gt;/backend/public/images&lt;br&gt;Stored Recipe Images]
-    U --&gt;|Served via /images/| N
-
-    %% --- Process Management ---
-    B --&gt; P[PM2 Process Manager&lt;br&gt;Auto-Restart + Monitoring]
-end
-
-%% --- External Services ---
-C --&gt; D[(MongoDB Atlas&lt;br&gt;Free M0 Cluster - 512MB)]
-C --&gt; CW[(Optional: AWS CloudWatch&lt;br&gt;Logs &amp; Metrics)]
-</code></pre>
-<p>``` --&gt;</p></div>
+</div>
+<h1 id="api-reference">API Reference</h1>
+<p>This table lists all API endpoints currently implemented (or recommended) in the <strong>Food Recipe Web App</strong>.<br/>
+The routes are grouped by functional modules: <strong>Auth/User</strong>, <strong>Recipes</strong>, <strong>Static Assets</strong>, and <strong>Favorites</strong>.</p>
+<hr/>
+<h2 id="auth-user">Auth / User</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>Method</strong></th>
+<th style="text-align: center;"><strong>Path</strong></th>
+<th style="text-align: center;"><strong>Auth</strong></th>
+<th style="text-align: center;"><strong>Request (body / params / query)</strong></th>
+<th style="text-align: center;"><strong>Notes</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>POST</strong></td>
+<td style="text-align: center;"><code>/signUp</code></td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">JSON <code>{ "email", "password" }</code></td>
+<td style="text-align: center;">Registers a new user</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>POST</strong></td>
+<td style="text-align: center;"><code>/login</code></td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">JSON <code>{ "email", "password": }</code></td>
+<td style="text-align: center;">Authenticates user and</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>GET</strong></td>
+<td style="text-align: center;"><code>/user/:id</code></td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">Path param: user ID</td>
+<td style="text-align: center;">Returns <code>{ email}</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="recipes">Recipes</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>Method</strong></th>
+<th style="text-align: center;"><strong>Path</strong></th>
+<th style="text-align: center;"><strong>Auth</strong></th>
+<th style="text-align: center;"><strong>Request (body / params / query)</strong></th>
+<th style="text-align: center;"><strong>Notes</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>GET</strong></td>
+<td style="text-align: center;"><code>/recipe/</code></td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">Returns <code>[ recipe, recipe]</code>; each recipe includes model fields</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>GET</strong></td>
+<td style="text-align: center;"><code>/recipe/:id</code></td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">Path param: recipe ID</td>
+<td style="text-align: center;">Returns a single recipe object.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>POST</strong></td>
+<td style="text-align: center;"><code>/recipe/</code></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">multipart/form-data <code>{ ex file, title}</code></td>
+<td style="text-align: center;">Creates a new recipe. Multer saves file to <code>backend/public/images</code> .</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>PUT</strong></td>
+<td style="text-align: center;"><code>/recipe/:id</code></td>
+<td style="text-align: center;">Optional</td>
+<td style="text-align: center;">multipart/form-data or JSON</td>
+<td style="text-align: center;">Updates an existing recipe.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>DELETE</strong></td>
+<td style="text-align: center;"><code>/recipe/:id</code></td>
+<td style="text-align: center;">Optional</td>
+<td style="text-align: center;">Path param: recipe ID</td>
+<td style="text-align: center;">Deletes recipe.</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="static-assets">Static Assets</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>Method</strong></th>
+<th style="text-align: center;"><strong>Path</strong></th>
+<th style="text-align: center;"><strong>Auth</strong></th>
+<th style="text-align: center;"><strong>Request (body / params / query)</strong></th>
+<th style="text-align: center;"><strong>Notes</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>GET</strong></td>
+<td style="text-align: center;"><code>/images/:filename</code></td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">Path param: filename</td>
+<td style="text-align: center;">Serves static images from <code>backend/public/images/</code>. Use in frontend as <code>http://&lt;host&gt;/images/&lt;coverImage&gt;</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="favorites-server-side-persistence">Favorites (Server-Side Persistence)</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>Method</strong></th>
+<th style="text-align: center;"><strong>Path</strong></th>
+<th style="text-align: center;"><strong>Auth</strong></th>
+<th style="text-align: center;"><strong>Request (body / params / query)</strong></th>
+<th style="text-align: center;"><strong>Notes</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>POST</strong></td>
+<td style="text-align: center;"><code>/favorite</code></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">JSON <code>{ "recipeId": "&lt;id&gt;" }</code></td>
+<td style="text-align: center;">Creates a favorite document .</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>DELETE</strong></td>
+<td style="text-align: center;"><code>/favorite/:recipeId</code></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Path param: recipeId</td>
+<td style="text-align: center;">Removes favorite for the current user.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>GET</strong></td>
+<td style="text-align: center;"><code>/favorite/me</code></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">Returns <code>[ favorite doc (populated with recipe) ]</code>.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>POST</strong></td>
+<td style="text-align: center;"><code>/favorite/migrate</code></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">JSON <code>{ "recipeIds" }</code></td>
+<td style="text-align: center;">Migrates localStorage favorites to DB on login.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="notes">Notes</h2>
+<ul>
+<li><strong>Image Handling:</strong> Managed by <strong>Multer</strong>; stored in <code>backend/public/images</code>.  </li>
+<li><strong>Authentication:</strong> Uses <strong>JWT</strong>. Include token in header:  </li>
+</ul>
+<hr/>
+<h1 id="testing-frameworks">Testing Frameworks</h1>
+<p>The project follows a minimal and efficient testing approach focusing on verifying key logic and API endpoints.<br/>
+This setup uses <strong>Jest</strong> for automated testing and <strong>Postman</strong> for manual API validation.</p>
+<hr/>
+<h2 id="overview">Overview</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"><strong>Testing Area</strong></th>
+<th style="text-align: left;"><strong>Framework / Tool</strong></th>
+<th style="text-align: left;"><strong>Purpose</strong></th>
+<th style="text-align: left;"><strong>Type of Testing</strong></th>
+<th style="text-align: left;"><strong>Execution Mode</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Backend &amp; Frontend Logic</strong></td>
+<td style="text-align: left;"><strong>Jest</strong></td>
+<td style="text-align: left;">Validate backend controllers, database operations, and utility functions.</td>
+<td style="text-align: left;">Unit / Integration</td>
+<td style="text-align: left;">Automated</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>API Endpoints</strong></td>
+<td style="text-align: left;"><strong>Postman</strong></td>
+<td style="text-align: left;">Verify API routes such as <code>/login</code>, <code>/signUp</code>, <code>/recipe</code>, and <code>/favorite</code>.</td>
+<td style="text-align: left;">Functional / Manual</td>
+<td style="text-align: left;">Manual runs using Postman GUI</td>
+</tr>
+</tbody>
+</table>
+<hr/></div>
 </div>
 </div>
 <footer class="col-md-12">
@@ -180,5 +417,6 @@ C --&gt; CW[(Optional: AWS CloudWatch&lt;br&gt;Logs &amp; Metrics)]
 </div>
 </div>
 </div>
-</body>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
 </html>
