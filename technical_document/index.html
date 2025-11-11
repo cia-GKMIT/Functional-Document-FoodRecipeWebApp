@@ -114,10 +114,10 @@
 </li>
 <li class="nav-item" data-bs-level="1"><a class="nav-link" href="#testing-frameworks">Testing Frameworks</a>
 <ul class="nav flex-column">
-<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#overview">Overview</a>
-<ul class="nav flex-column">
 </ul>
 </li>
+<li class="nav-item" data-bs-level="1"><a class="nav-link" href="#tech-stack">Tech Stack</a>
+<ul class="nav flex-column">
 </ul>
 </li>
 </ul>
@@ -335,8 +335,6 @@ The routes are grouped by functional modules: <strong>Auth/User</strong>, <stron
 <h1 id="testing-frameworks">Testing Frameworks</h1>
 <p>The project follows a minimal and efficient testing approach focusing on verifying key logic and API endpoints.<br/>
 This setup uses <strong>Jest</strong> for automated testing and <strong>Postman</strong> for manual API validation.</p>
-<hr/>
-<h2 id="overview">Overview</h2>
 <table>
 <thead>
 <tr>
@@ -361,6 +359,113 @@ This setup uses <strong>Jest</strong> for automated testing and <strong>Postman<
 <td style="text-align: left;">Verify API routes such as <code>/login</code>, <code>/signUp</code>, <code>/recipe</code>, and <code>/favorite</code>.</td>
 <td style="text-align: left;">Functional / Manual</td>
 <td style="text-align: left;">Manual runs using Postman GUI</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h1 id="tech-stack">Tech Stack</h1>
+<p>The <strong>Food Recipe Web App</strong> is a full-stack MERN (MongoDB, Express.js, React, Node.js) project designed for recipe management, authentication, and image handling.<br/>
+The table below lists all major technologies and their specific roles.</p>
+<hr/>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"><strong>Layer</strong></th>
+<th style="text-align: left;"><strong>Technology / Service</strong></th>
+<th style="text-align: left;"><strong>Purpose</strong></th>
+<th style="text-align: left;"><strong>Category</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Frontend</strong></td>
+<td style="text-align: left;"><strong>React.js + Vite</strong></td>
+<td style="text-align: left;">Build fast, responsive, and modular user interfaces.</td>
+<td style="text-align: left;">Framework</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>PWA (Progressive Web App)</strong></td>
+<td style="text-align: left;">Enable offline use and “Add to Home Screen” functionality.</td>
+<td style="text-align: left;">Enhancement</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Backend</strong></td>
+<td style="text-align: left;"><strong>Node.js</strong></td>
+<td style="text-align: left;">Runtime environment for server-side logic.</td>
+<td style="text-align: left;">Runtime</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>Express.js</strong></td>
+<td style="text-align: left;">Lightweight web framework to manage routes and APIs.</td>
+<td style="text-align: left;">Framework</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>Multer</strong></td>
+<td style="text-align: left;">Handle file uploads (recipe images).</td>
+<td style="text-align: left;">Middleware</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>bcrypt</strong></td>
+<td style="text-align: left;">Secure password hashing before storage.</td>
+<td style="text-align: left;">Security</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>JWT (JSON Web Token)</strong></td>
+<td style="text-align: left;">User authentication and authorization.</td>
+<td style="text-align: left;">Security</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Database</strong></td>
+<td style="text-align: left;"><strong>MongoDB Atlas</strong></td>
+<td style="text-align: left;">Store user data, recipes, and favorites in the cloud.</td>
+<td style="text-align: left;">Database</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Cloud &amp; Deployment</strong></td>
+<td style="text-align: left;"><strong>AWS EC2</strong></td>
+<td style="text-align: left;">Host backend server and APIs.</td>
+<td style="text-align: left;">Cloud Compute</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>AWS S3</strong></td>
+<td style="text-align: left;">Store uploaded images securely and serve them globally.</td>
+<td style="text-align: left;">Cloud Storage</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>AWS Route 53</strong></td>
+<td style="text-align: left;">Manage custom domain and DNS routing.</td>
+<td style="text-align: left;">Cloud DNS</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>GitHub Pages</strong></td>
+<td style="text-align: left;">Deploy documentation and static assets.</td>
+<td style="text-align: left;">Hosting</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Testing &amp; Validation</strong></td>
+<td style="text-align: left;"><strong>Jest</strong></td>
+<td style="text-align: left;">Unit and integration testing for logic validation.</td>
+<td style="text-align: left;">Testing</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>Postman</strong></td>
+<td style="text-align: left;">Manual API testing and verification.</td>
+<td style="text-align: left;">Testing</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Version Control</strong></td>
+<td style="text-align: left;"><strong>Git &amp; GitHub</strong></td>
+<td style="text-align: left;">Track versions and collaborate on code.</td>
+<td style="text-align: left;">DevOps</td>
 </tr>
 </tbody>
 </table>
