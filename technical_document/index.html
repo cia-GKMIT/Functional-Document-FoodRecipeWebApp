@@ -88,6 +88,18 @@
 </li>
 </ul>
 </li>
+<li class="nav-item" data-bs-level="1"><a class="nav-link" href="#authorization-food-recipe-web-app">Authorization — Food Recipe Web App</a>
+<ul class="nav flex-column">
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#overview">Overview</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#authorization-flow">Authorization Flow</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+</ul>
+</li>
 <li class="nav-item" data-bs-level="1"><a class="nav-link" href="#api-reference">API Reference</a>
 <ul class="nav flex-column">
 <li class="nav-item" data-bs-level="2"><a class="nav-link" href="#auth-user">Auth / User</a>
@@ -103,10 +115,6 @@
 </ul>
 </li>
 <li class="nav-item" data-bs-level="2"><a class="nav-link" href="#favorites-server-side-persistence">Favorites (Server-Side Persistence)</a>
-<ul class="nav flex-column">
-</ul>
-</li>
-<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#notes">Notes</a>
 <ul class="nav flex-column">
 </ul>
 </li>
@@ -143,11 +151,11 @@
 <hr/>
 <h2 id="aws-deployment-architecture">AWS Deployment Architecture</h2>
 <p>Below is the structure showing how the application is deployed using AWS services.</p>
-<p><img alt="AWS Deployment Structure" src="../AWS%20architecture.png"/></p>
+<p><img alt="AWS Deployment Structure" src="../AWS%20architecture-2.png"/></p>
 <hr/>
 <h2 id="data-flow-diagram-dfd">Data Flow Diagram (DFD)</h2>
 <p>The DFD illustrates how data moves across the system — from users to the database and backend processes.</p>
-<p><img alt="System DFD" src="../Blank%20diagram.png"/></p>
+<p><img alt="System DFD" src="../Blank%20diagram-2.png"/></p>
 <blockquote>
 <p><em>Note: This is a simplified Level-1 DFD representing the major data movement.</em></p>
 </blockquote>
@@ -172,6 +180,51 @@
         App -&gt;&gt; User: Show "Wrong password"
     end
 </div>
+<hr/>
+<h1 id="authorization-food-recipe-web-app">Authorization — Food Recipe Web App</h1>
+<p>The <strong>Food Recipe Web App</strong> uses <strong>JWT-based authorization</strong> to manage access to its backend routes.<br/>
+There are <strong>two user types</strong> in the system:</p>
+<ul>
+<li><strong>Guest</strong> — an unauthenticated user (can only view and search recipes).  </li>
+<li><strong>User</strong> — an authenticated user (can create, edit, delete, or mark recipes as favorite).</li>
+</ul>
+<hr/>
+<h2 id="overview">Overview</h2>
+<p>Authorization determines <strong>what a user is allowed to do</strong> after authentication.<br/>
+All <strong>read operations</strong> are public, while <strong>write operations</strong> (create, update, delete, favorite) require a valid JWT.</p>
+<table>
+<thead>
+<tr>
+<th>Access Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Guest</strong></td>
+<td>Public access without login</td>
+<td>Viewing and searching recipes</td>
+</tr>
+<tr>
+<td><strong>User</strong></td>
+<td>Authenticated with JWT</td>
+<td>Creating, editing, deleting, or favoriting recipes</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="authorization-flow">Authorization Flow</h2>
+<div class="mermaid">flowchart TD
+    A[Guest or User] --&gt;|Sends Request for create,update,delete recipe| B[Auth Middleware]
+    B --&gt;|Valid JWT?| C{Token Valid?}
+    C --&gt;|No| D[401 Unauthorized]
+    C --&gt;|Yes| E[Ownership Check]
+    E --&gt;|Authorised user| F[Access Granted]
+    E --&gt;|Unauthorised user| G[403 Forbidden]
+
+</div>
+<hr/>
 <h1 id="api-reference">API Reference</h1>
 <p>This table lists all API endpoints currently implemented (or recommended) in the <strong>Food Recipe Web App</strong>.<br/>
 The routes are grouped by functional modules: <strong>Auth/User</strong>, <strong>Recipes</strong>, <strong>Static Assets</strong>, and <strong>Favorites</strong>.</p>
@@ -326,11 +379,6 @@ The routes are grouped by functional modules: <strong>Auth/User</strong>, <stron
 </tr>
 </tbody>
 </table>
-<h2 id="notes">Notes</h2>
-<ul>
-<li><strong>Image Handling:</strong> Managed by <strong>Multer</strong>; stored in <code>backend/public/images</code>.  </li>
-<li><strong>Authentication:</strong> Uses <strong>JWT</strong>. Include token in header:  </li>
-</ul>
 <hr/>
 <h1 id="testing-frameworks">Testing Frameworks</h1>
 <p>The project follows a minimal and efficient testing approach focusing on verifying key logic and API endpoints.<br/>
