@@ -24,7 +24,7 @@ This setup ensures high availability, scalability, and separation of concerns be
 
 Below is the structure showing how the application is deployed using AWS services.
 
-![AWS Deployment Structure](AWS architecture.png)
+![AWS Deployment Structure](AWS architecture-2.png)
 
 ---
 
@@ -32,7 +32,7 @@ Below is the structure showing how the application is deployed using AWS service
 
 The DFD illustrates how data moves across the system — from users to the database and backend processes.
 
-![System DFD](Blank diagram.png)
+![System DFD](Blank diagram-2.png)
 
 > *Note: This is a simplified Level-1 DFD representing the major data movement.*
 
@@ -43,7 +43,6 @@ The DFD illustrates how data moves across the system — from users to the datab
 3. **Backend Processing** – The Node.js + Express server validates inputs, handles business logic, and manages authentication.  
 4. **Database Operations** – MongoDB Atlas stores or retrieves recipe and user data as requested.  
 5. **Response Delivery** – The backend sends structured JSON responses to the frontend, which updates the UI accordingly.
-
 
 ---
 
@@ -63,7 +62,44 @@ sequenceDiagram
     end
 ```
 
+---
 
+# Authorization — Food Recipe Web App
+
+The **Food Recipe Web App** uses **JWT-based authorization** to manage access to its backend routes.  
+There are **two user types** in the system:
+
+- **Guest** — an unauthenticated user (can only view and search recipes).  
+- **User** — an authenticated user (can create, edit, delete, or mark recipes as favorite).
+
+---
+
+##  Overview
+
+Authorization determines **what a user is allowed to do** after authentication.  
+All **read operations** are public, while **write operations** (create, update, delete, favorite) require a valid JWT.
+
+| Access Type | Description | Example |
+|--------------|-------------|----------|
+| **Guest** | Public access without login | Viewing and searching recipes |
+| **User** | Authenticated with JWT | Creating, editing, deleting, or favoriting recipes |
+
+---
+
+##  Authorization Flow
+
+```mermaid
+flowchart TD
+    A[Guest or User] -->|Sends Request for create,update,delete recipe| B[Auth Middleware]
+    B -->|Valid JWT?| C{Token Valid?}
+    C -->|No| D[401 Unauthorized]
+    C -->|Yes| E[Ownership Check]
+    E -->|Authorised user| F[Access Granted]
+    E -->|Unauthorised user| G[403 Forbidden]
+
+```
+
+---
 # API Reference
 
 This table lists all API endpoints currently implemented (or recommended) in the **Food Recipe Web App**.  
@@ -111,10 +147,6 @@ The routes are grouped by functional modules: **Auth/User**, **Recipes**, **Stat
 | **GET** | `/favorite/me` | Yes | — | Returns `[ favorite doc (populated with recipe) ]`. |
 | **POST** | `/favorite/migrate` | Yes | JSON `{ "recipeIds" }` | Migrates localStorage favorites to DB on login. |
 
-## Notes
-
-- **Image Handling:** Managed by **Multer**; stored in `backend/public/images`.  
-- **Authentication:** Uses **JWT**. Include token in header:  
 
 ---
 
