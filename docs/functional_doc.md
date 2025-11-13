@@ -199,26 +199,16 @@ flowchart LR
 
 flowchart TB
     %% Define Roles
-    A[Admin]
     B[Registered User]
     C[Guest User]
 
     %% Define Permissions
-    P1[Manage Users and Roles]
-    P2[Manage All Recipes]
     P3[Create Recipe]
     P4[Edit or Delete Own Recipe]
     P5[Mark Favorite Recipes]
     P6[Customize Favorite Recipes]
     P7[View All Recipes]
     P8[search Recipes]
-    
-
-    %% Admin Permissions
-    A --> P1
-    A --> P2
-    A --> P7
-    A --> P8
     
 
     %% Registered User Permissions
