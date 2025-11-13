@@ -72,32 +72,20 @@
 </div>
 <div class="navbar-collapse collapse card bg-body-tertiary" id="toc-collapse">
 <ul class="nav flex-column">
-<li class="nav-item" data-bs-level="1"><a class="nav-link" href="#database-schema">Database Schema</a>
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#database-schema">Database Schema</a>
 <ul class="nav flex-column">
-<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#1-overview">1. Overview</a>
-<ul class="nav flex-column">
-</ul>
-</li>
-<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#2-collections-and-fields">2. Collections and Fields</a>
-<ul class="nav flex-column">
-</ul>
-</li>
-<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#3-database-diagram">3. Database-Diagram</a>
-<ul class="nav flex-column">
-</ul>
-</li>
 </ul>
 </li>
 </ul>
 </div>
 </div></div>
 <div class="col-md-9" role="main">
-<h1 id="database-schema">Database Schema</h1>
+<h2 id="database-schema">Database Schema</h2>
 <p>This section documents the database schema exactly as implemented in the project’s model files.<br/>
 The database uses <strong>MongoDB</strong> with <strong>Mongoose</strong>, and all models include <code>{ timestamps: true }</code><br/>
 to automatically add <code>createdAt</code>, <code>updatedAt</code> and <code>deletedAt</code> fields.</p>
 <hr/>
-<h2 id="1-overview">1. Overview</h2>
+<h3 id="1-overview">1. Overview</h3>
 <p>The Food Recipe Web App database consists of three main collections:</p>
 <table>
 <thead>
@@ -108,11 +96,11 @@ to automatically add <code>createdAt</code>, <code>updatedAt</code> and <code>de
 </thead>
 <tbody>
 <tr>
-<td><strong>Favourite</strong></td>
+<td><strong>Favourites</strong></td>
 <td>Authorised user can customise their recipes what they like</td>
 </tr>
 <tr>
-<td><strong>User</strong></td>
+<td><strong>Users</strong></td>
 <td>Regular users who create, update, and manage recipes</td>
 </tr>
 <tr>
@@ -124,7 +112,7 @@ to automatically add <code>createdAt</code>, <code>updatedAt</code> and <code>de
 <!-- 
 Each collection is connected through **ObjectId references**, creating logical relationships (similar to SQL joins). -->
 <hr/>
-<h2 id="2-collections-and-fields">2. Collections and Fields</h2>
+<h3 id="2-collections-and-fields">2. Collections and Fields</h3>
 <h3 id="admin-collection">🧩 Admin Collection</h3>
 <table>
 <thead>
@@ -174,17 +162,17 @@ Each collection is connected through **ObjectId references**, creating logical r
 
 </code></pre>
 <hr/>
-<h2 id="3-database-diagram">3. Database-Diagram</h2>
+<h3 id="3-database-diagram">3. Database-Diagram</h3>
 <div class="mermaid">erDiagram
 
 
-    FAVORITE {
+    FAVORITES {
         ObjectId _id PK 
-        ObjectId user FK "ref: USERS"
-        ObjectId recipe FK "ref: RECIPES"
+        ObjectId userId FK "ref: USERS._id"
+        ObjectId recipeId FK "ref: RECIPES._id"
         Date createdAt
         Date updatedAt
-        Date deletedat
+        Date deletedAt
     }
 
     USERS {
@@ -193,7 +181,7 @@ Each collection is connected through **ObjectId references**, creating logical r
         String password "required" 
         Date createdAt
         Date updatedAt
-        Date deletedat
+        Date deletedAt
     }
 
     RECIPES {
@@ -203,15 +191,15 @@ Each collection is connected through **ObjectId references**, creating logical r
         String instructions "required"
         String time
         String coverImage
-        ObjectId createdBy FK "ref: USERS"
+        ObjectId createdById FK "ref: USERS._id"
         Date createdAt
         Date updatedAt
-        Date deletedat
+        Date deletedAt
     }
 
     RECIPES }o--|| USERS : "createdBy"
-    FAVORITE }o--|| USERS : "user"
-    FAVORITE }o--|| RECIPES : "recipe"
+    FAVORITES }o--|| USERS : "user"
+    FAVORITES }o--|| RECIPES : "recipe"
 
 
 </div>
