@@ -95,7 +95,7 @@
 <h1 id="database-schema">Database Schema</h1>
 <p>This section documents the database schema exactly as implemented in the project’s model files.<br/>
 The database uses <strong>MongoDB</strong> with <strong>Mongoose</strong>, and all models include <code>{ timestamps: true }</code><br/>
-to automatically add <code>createdAt</code> and <code>updatedAt</code> fields.</p>
+to automatically add <code>createdAt</code>, <code>updatedAt</code> and <code>deletedAt</code> fields.</p>
 <hr/>
 <h2 id="1-overview">1. Overview</h2>
 <p>The Food Recipe Web App database consists of three main collections:</p>
@@ -108,8 +108,8 @@ to automatically add <code>createdAt</code> and <code>updatedAt</code> fields.</
 </thead>
 <tbody>
 <tr>
-<td><strong>Admin</strong></td>
-<td>Manages user accounts and oversees app activity</td>
+<td><strong>Favourite</strong></td>
+<td>Authorised user can customise their recipes what they like</td>
 </tr>
 <tr>
 <td><strong>User</strong></td>
@@ -146,17 +146,17 @@ Each collection is connected through **ObjectId references**, creating logical r
 <td>Hashed password</td>
 </tr>
 <tr>
-<td><code>role</code></td>
-<td>String</td>
-<td>References the Role collection</td>
-</tr>
-<tr>
 <td><code>createdAt</code></td>
 <td>Date</td>
 <td>Added automatically by timestamps</td>
 </tr>
 <tr>
 <td><code>updatedAt</code></td>
+<td>Date</td>
+<td>Added automatically by timestamps</td>
+</tr>
+<tr>
+<td><code>deletedAt</code></td>
 <td>Date</td>
 <td>Added automatically by timestamps</td>
 </tr>
@@ -167,9 +167,9 @@ Each collection is connected through **ObjectId references**, creating logical r
   "_id": "673013a91234567890abcd11",
   "email": "admin@example.com",
   "password": "$2b$10$abc123hashedpassword",
-  "role": "admin",
   "createdAt": "2025-11-10T09:45:00Z",
-  "updatedAt": "2025-11-10T09:45:00Z"
+  "updatedAt": "2025-11-10T09:45:00Z",
+  "deletedAt": "2025-11-10T09:45:00Z"
 }
 
 </code></pre>
@@ -190,8 +190,7 @@ Each collection is connected through **ObjectId references**, creating logical r
     USERS {
         ObjectId _id PK 
         String email "required,unique"
-        String password "required"
-        ObjectId role 
+        String password "required" 
         Date createdAt
         Date updatedAt
         Date deletedat
