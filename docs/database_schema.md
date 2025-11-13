@@ -2,7 +2,7 @@
 
 This section documents the database schema exactly as implemented in the project’s model files.  
 The database uses **MongoDB** with **Mongoose**, and all models include `{ timestamps: true }`  
-to automatically add `createdAt` and `updatedAt` fields.
+to automatically add `createdAt`, `updatedAt` and `deletedAt` fields.
 
 ---
 
@@ -12,7 +12,7 @@ The Food Recipe Web App database consists of three main collections:
 
 | Collection | Description |
 |-------------|--------------|
-| **Admin** | Manages user accounts and oversees app activity |
+| **Favourite** | Authorised user can customise their recipes what they like |
 | **User** | Regular users who create, update, and manage recipes |
 | **Recipes** | Stores recipe details and links to their creators |
 <!-- 
@@ -28,9 +28,9 @@ Each collection is connected through **ObjectId references**, creating logical r
 |--------|------|-------------|
 | `email` | String | Unique admin email |
 | `password` | String | Hashed password |
-| `role` | String | References the Role collection|
 | `createdAt` | Date | Added automatically by timestamps |
 | `updatedAt` | Date | Added automatically by timestamps |
+| `deletedAt` | Date | Added automatically by timestamps |
 
 ### Example Document
 
@@ -39,9 +39,9 @@ Each collection is connected through **ObjectId references**, creating logical r
   "_id": "673013a91234567890abcd11",
   "email": "admin@example.com",
   "password": "$2b$10$abc123hashedpassword",
-  "role": "admin",
   "createdAt": "2025-11-10T09:45:00Z",
-  "updatedAt": "2025-11-10T09:45:00Z"
+  "updatedAt": "2025-11-10T09:45:00Z",
+  "deletedAt": "2025-11-10T09:45:00Z"
 }
 
 ```
@@ -66,8 +66,7 @@ erDiagram
     USERS {
         ObjectId _id PK 
         String email "required,unique"
-        String password "required"
-        ObjectId role 
+        String password "required" 
         Date createdAt
         Date updatedAt
         Date deletedat
