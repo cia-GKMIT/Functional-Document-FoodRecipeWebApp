@@ -72,13 +72,7 @@
 </div>
 <div class="navbar-collapse collapse card bg-body-tertiary" id="toc-collapse">
 <ul class="nav flex-column">
-<li class="nav-item" data-bs-level="1"><a class="nav-link" href="#system-architecture-data-flow">System Architecture &amp; Data Flow</a>
-<ul class="nav flex-column">
-<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#aws-deployment-architecture">AWS Deployment Architecture</a>
-<ul class="nav flex-column">
-</ul>
-</li>
-<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#data-flow-diagram-dfd">Data Flow Diagram (DFD)</a>
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#system-architecture-data-flow">System Architecture &amp; Data Flow</a>
 <ul class="nav flex-column">
 </ul>
 </li>
@@ -86,10 +80,10 @@
 <ul class="nav flex-column">
 </ul>
 </li>
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#authorization-food-recipe-web-app">Authorization — Food Recipe Web App</a>
+<ul class="nav flex-column">
 </ul>
 </li>
-<li class="nav-item" data-bs-level="1"><a class="nav-link" href="#authorization-food-recipe-web-app">Authorization — Food Recipe Web App</a>
-<ul class="nav flex-column">
 <li class="nav-item" data-bs-level="2"><a class="nav-link" href="#overview">Overview</a>
 <ul class="nav flex-column">
 </ul>
@@ -98,33 +92,15 @@
 <ul class="nav flex-column">
 </ul>
 </li>
-</ul>
-</li>
-<li class="nav-item" data-bs-level="1"><a class="nav-link" href="#api-reference">API Reference</a>
-<ul class="nav flex-column">
-<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#auth-user">Auth / User</a>
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#api-reference">API Reference</a>
 <ul class="nav flex-column">
 </ul>
 </li>
-<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#recipes">Recipes</a>
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#testing-frameworks">Testing Frameworks</a>
 <ul class="nav flex-column">
 </ul>
 </li>
-<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#static-assets">Static Assets</a>
-<ul class="nav flex-column">
-</ul>
-</li>
-<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#favorites-server-side-persistence">Favorites (Server-Side Persistence)</a>
-<ul class="nav flex-column">
-</ul>
-</li>
-</ul>
-</li>
-<li class="nav-item" data-bs-level="1"><a class="nav-link" href="#testing-frameworks">Testing Frameworks</a>
-<ul class="nav flex-column">
-</ul>
-</li>
-<li class="nav-item" data-bs-level="1"><a class="nav-link" href="#tech-stack">Tech Stack</a>
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#tech-stack">Tech Stack</a>
 <ul class="nav flex-column">
 </ul>
 </li>
@@ -132,7 +108,7 @@
 </div>
 </div></div>
 <div class="col-md-9" role="main">
-<h1 id="system-architecture-data-flow">System Architecture &amp; Data Flow</h1>
+<h2 id="system-architecture-data-flow">System Architecture &amp; Data Flow</h2>
 <p>This section explains the overall system setup and internal data movement in the project.</p>
 <hr/>
 <h3 id="explanation">Explanation</h3>
@@ -149,11 +125,11 @@
 </ul>
 <p>This setup ensures high availability, scalability, and separation of concerns between static hosting, compute, and storage.</p>
 <hr/>
-<h2 id="aws-deployment-architecture">AWS Deployment Architecture</h2>
+<h3 id="aws-deployment-architecture">AWS Deployment Architecture</h3>
 <p>Below is the structure showing how the application is deployed using AWS services.</p>
-<p><img alt="AWS Deployment Structure" src="../AWS%20architecture-2.png"/></p>
+<p><img alt="AWS Deployment Structure" src="../AWS%20architecture-6.png"/></p>
 <hr/>
-<h2 id="data-flow-diagram-dfd">Data Flow Diagram (DFD)</h2>
+<h3 id="data-flow-diagram-dfd">Data Flow Diagram (DFD)</h3>
 <p>The DFD illustrates how data moves across the system — from users to the database and backend processes.</p>
 <p><img alt="System DFD" src="../Blank%20diagram-2.png"/></p>
 <blockquote>
@@ -181,7 +157,7 @@
     end
 </div>
 <hr/>
-<h1 id="authorization-food-recipe-web-app">Authorization — Food Recipe Web App</h1>
+<h2 id="authorization-food-recipe-web-app">Authorization — Food Recipe Web App</h2>
 <p>The <strong>Food Recipe Web App</strong> uses <strong>JWT-based authorization</strong> to manage access to its backend routes.<br/>
 There are <strong>two user types</strong> in the system:</p>
 <ul>
@@ -225,11 +201,11 @@ All <strong>read operations</strong> are public, while <strong>write operations<
 
 </div>
 <hr/>
-<h1 id="api-reference">API Reference</h1>
+<h2 id="api-reference">API Reference</h2>
 <p>This table lists all API endpoints currently implemented (or recommended) in the <strong>Food Recipe Web App</strong>.<br/>
 The routes are grouped by functional modules: <strong>Auth/User</strong>, <strong>Recipes</strong>, <strong>Static Assets</strong>, and <strong>Favorites</strong>.</p>
 <hr/>
-<h2 id="auth-user">Auth / User</h2>
+<h3 id="auth-user">Auth / User</h3>
 <table>
 <thead>
 <tr>
@@ -265,7 +241,7 @@ The routes are grouped by functional modules: <strong>Auth/User</strong>, <stron
 </tbody>
 </table>
 <hr/>
-<h2 id="recipes">Recipes</h2>
+<h3 id="recipes">Recipes</h3>
 <table>
 <thead>
 <tr>
@@ -279,35 +255,35 @@ The routes are grouped by functional modules: <strong>Auth/User</strong>, <stron
 <tbody>
 <tr>
 <td style="text-align: center;"><strong>GET</strong></td>
-<td style="text-align: center;"><code>/recipe/</code></td>
+<td style="text-align: center;"><code>/recipes/</code></td>
 <td style="text-align: center;">No</td>
 <td style="text-align: center;">—</td>
 <td style="text-align: center;">Returns <code>[ recipe, recipe]</code>; each recipe includes model fields</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>GET</strong></td>
-<td style="text-align: center;"><code>/recipe/:id</code></td>
+<td style="text-align: center;"><code>/recipes/:id</code></td>
 <td style="text-align: center;">No</td>
 <td style="text-align: center;">Path param: recipe ID</td>
 <td style="text-align: center;">Returns a single recipe object.</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>POST</strong></td>
-<td style="text-align: center;"><code>/recipe/</code></td>
+<td style="text-align: center;"><code>/recipes/</code></td>
 <td style="text-align: center;">Yes</td>
 <td style="text-align: center;">multipart/form-data <code>{ ex file, title}</code></td>
 <td style="text-align: center;">Creates a new recipe. Multer saves file to <code>backend/public/images</code> .</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>PUT</strong></td>
-<td style="text-align: center;"><code>/recipe/:id</code></td>
+<td style="text-align: center;"><code>/recipes/:id</code></td>
 <td style="text-align: center;">Optional</td>
 <td style="text-align: center;">multipart/form-data or JSON</td>
 <td style="text-align: center;">Updates an existing recipe.</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>DELETE</strong></td>
-<td style="text-align: center;"><code>/recipe/:id</code></td>
+<td style="text-align: center;"><code>/recipes/:id</code></td>
 <td style="text-align: center;">Optional</td>
 <td style="text-align: center;">Path param: recipe ID</td>
 <td style="text-align: center;">Deletes recipe.</td>
@@ -315,7 +291,7 @@ The routes are grouped by functional modules: <strong>Auth/User</strong>, <stron
 </tbody>
 </table>
 <hr/>
-<h2 id="static-assets">Static Assets</h2>
+<h3 id="static-assets">Static Assets</h3>
 <table>
 <thead>
 <tr>
@@ -337,7 +313,7 @@ The routes are grouped by functional modules: <strong>Auth/User</strong>, <stron
 </tbody>
 </table>
 <hr/>
-<h2 id="favorites-server-side-persistence">Favorites (Server-Side Persistence)</h2>
+<h3 id="favorites-server-side-persistence">Favorites (Server-Side Persistence)</h3>
 <table>
 <thead>
 <tr>
@@ -351,28 +327,28 @@ The routes are grouped by functional modules: <strong>Auth/User</strong>, <stron
 <tbody>
 <tr>
 <td style="text-align: center;"><strong>POST</strong></td>
-<td style="text-align: center;"><code>/favorite</code></td>
+<td style="text-align: center;"><code>/favorites</code></td>
 <td style="text-align: center;">Yes</td>
 <td style="text-align: center;">JSON <code>{ "recipeId": "&lt;id&gt;" }</code></td>
 <td style="text-align: center;">Creates a favorite document .</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>DELETE</strong></td>
-<td style="text-align: center;"><code>/favorite/:recipeId</code></td>
+<td style="text-align: center;"><code>/favorites/:recipeId</code></td>
 <td style="text-align: center;">Yes</td>
 <td style="text-align: center;">Path param: recipeId</td>
 <td style="text-align: center;">Removes favorite for the current user.</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>GET</strong></td>
-<td style="text-align: center;"><code>/favorite/me</code></td>
+<td style="text-align: center;"><code>/favorites/me</code></td>
 <td style="text-align: center;">Yes</td>
 <td style="text-align: center;">—</td>
 <td style="text-align: center;">Returns <code>[ favorite doc (populated with recipe) ]</code>.</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>POST</strong></td>
-<td style="text-align: center;"><code>/favorite/migrate</code></td>
+<td style="text-align: center;"><code>/favorites/migrate</code></td>
 <td style="text-align: center;">Yes</td>
 <td style="text-align: center;">JSON <code>{ "recipeIds" }</code></td>
 <td style="text-align: center;">Migrates localStorage favorites to DB on login.</td>
@@ -380,7 +356,7 @@ The routes are grouped by functional modules: <strong>Auth/User</strong>, <stron
 </tbody>
 </table>
 <hr/>
-<h1 id="testing-frameworks">Testing Frameworks</h1>
+<h2 id="testing-frameworks">Testing Frameworks</h2>
 <p>The project follows a minimal and efficient testing approach focusing on verifying key logic and API endpoints.<br/>
 This setup uses <strong>Jest</strong> for automated testing and <strong>Postman</strong> for manual API validation.</p>
 <table>
@@ -411,7 +387,7 @@ This setup uses <strong>Jest</strong> for automated testing and <strong>Postman<
 </tbody>
 </table>
 <hr/>
-<h1 id="tech-stack">Tech Stack</h1>
+<h2 id="tech-stack">Tech Stack</h2>
 <p>The <strong>Food Recipe Web App</strong> is a full-stack MERN (MongoDB, Express.js, React, Node.js) project designed for recipe management, authentication, and image handling.<br/>
 The table below lists all major technologies and their specific roles.</p>
 <hr/>

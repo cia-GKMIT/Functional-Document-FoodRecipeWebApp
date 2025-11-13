@@ -72,57 +72,33 @@
 </div>
 <div class="navbar-collapse collapse card bg-body-tertiary" id="toc-collapse">
 <ul class="nav flex-column">
-<li class="nav-item" data-bs-level="1"><a class="nav-link" href="#food-recipe-web-app-functional-document">Food Recipe Web App — Functional Document</a>
-<ul class="nav flex-column">
-<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#overview">Overview</a>
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#food-recipe-web-app-functional-document">Food Recipe Web App — Functional Document</a>
 <ul class="nav flex-column">
 </ul>
 </li>
-<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#project-purpose">Project Purpose</a>
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#21system-requirements">2.1.System Requirements</a>
 <ul class="nav flex-column">
 </ul>
 </li>
-<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#core-features">Core Features</a>
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#212non-functional-requirements">2.1.2Non-Functional Requirements</a>
 <ul class="nav flex-column">
-</ul>
-</li>
-<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#system-overview">System Overview</a>
-<ul class="nav flex-column">
-</ul>
-</li>
-<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#system-requirements">System Requirements</a>
-<ul class="nav flex-column">
-</ul>
-</li>
-<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#functional-requirements">Functional Requirements</a>
-<ul class="nav flex-column">
-</ul>
-</li>
-<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#non-functional-requirements">Non-Functional Requirements</a>
-<ul class="nav flex-column">
-</ul>
-</li>
-<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#user-roles">User-roles</a>
-<ul class="nav flex-column">
-</ul>
-</li>
 </ul>
 </li>
 </ul>
 </div>
 </div></div>
 <div class="col-md-9" role="main">
-<h1 id="food-recipe-web-app-functional-document">Food Recipe Web App — Functional Document</h1>
-<h2 id="overview">Overview</h2>
+<h2 id="food-recipe-web-app-functional-document">Food Recipe Web App — Functional Document</h2>
+<h3 id="1overview">1.Overview</h3>
 <p>This document covers the main features, requirements, and data flow of my <strong>Food Recipe Web App</strong>.<br/>
 It’s a full-stack <strong>MERN</strong> application that lets users register, log in, and manage their own recipes with image uploads.<br/>
 I’m also adding <strong>PWA (Progressive Web App)</strong> support so it can work smoothly on mobile phones too.</p>
 <hr/>
-<h2 id="project-purpose">Project Purpose</h2>
+<h3 id="11project-purpose">1.1.Project Purpose</h3>
 <p>The Food Recipe Web App provides an online platform for users to create, manage, and share their cooking recipes.<br/>
 It solves the real-world problem of disorganized recipe storage and lack of personalization in existing platforms like YouTube or Pinterest.</p>
 <hr/>
-<h2 id="core-features">Core Features</h2>
+<h3 id="12core-features">1.2.Core Features</h3>
 <table>
 <thead>
 <tr>
@@ -185,7 +161,7 @@ It solves the real-world problem of disorganized recipe storage and lack of pers
 </tbody>
 </table>
 <hr/>
-<h2 id="system-overview">System Overview</h2>
+<h3 id="2system-overview">2.System Overview</h3>
 <div class="mermaid">flowchart LR
     A[User] --&gt;|Registers, Logs In, Views Recipes| B[System Server]
     A --&gt;|Creates, Updates, Deletes Recipes| B
@@ -204,8 +180,10 @@ It solves the real-world problem of disorganized recipe storage and lack of pers
 
 
 </div>
-<h2 id="system-requirements">System Requirements</h2>
-<h2 id="functional-requirements">Functional Requirements</h2>
+<h2 id="21system-requirements">2.1.System Requirements</h2>
+<p>The System Requirements section outlines the functional and non-functional behaviors of the application. It defines what the system must do, how it should perform, and the constraints it must follow to ensure reliability and usability.</p>
+<h3 id="211-functional-requirements">2.1.1 Functional Requirements</h3>
+<hr/>
 <h3 id="fr-01-user-registration">FR-01: User Registration</h3>
 <ul>
 <li><strong>Description:</strong> Users can register using name, email, and password.  </li>
@@ -278,24 +256,24 @@ It solves the real-world problem of disorganized recipe storage and lack of pers
 <li><strong>Errors:</strong> Database write error.</li>
 </ul>
 <hr/>
-<h3 id="fr-09-progressive-web-app-pwa">FR-09: Progressive Web App (PWA)</h3>
-<ul>
-<li><strong>Description:</strong> Enable app install and offline access.  </li>
-<li><strong>Inputs:</strong> —  </li>
-<li><strong>Process:</strong> Register service worker and cache assets.  </li>
-<li><strong>Output:</strong> App usable offline.  </li>
-<li><strong>Errors:</strong> Cache failure or sync delay.</li>
-</ul>
-<hr/>
-<h3 id="fr-10-searching-recipes">FR-10: Searching Recipes</h3>
+<h3 id="fr-09-searching-recipes">FR-09: Searching Recipes</h3>
 <ul>
 <li><strong>Description:</strong> Allows users to search for recipes by name or title.</li>
 <li><strong>Inputs:</strong>  Recipe name or title (string).</li>
 <li><strong>Process:</strong> User enters a keyword; the system searches stored recipe titles for matches.</li>
 <li><strong>Output:</strong> List of matching recipes with title, image, ingredients, and time.</li>
-<li><strong>Errors:</strong> 400 (missing input), 404 (no matches found).</li>
+<li><strong>Errors:</strong> No matching recipes found.</li>
 </ul>
-<h2 id="non-functional-requirements">Non-Functional Requirements</h2>
+<hr/>
+<h3 id="fr-10-progressive-web-app-pwa">FR-10: Progressive Web App (PWA)</h3>
+<ul>
+<li><strong>Description:</strong> Enable app install and offline access.     </li>
+<li><strong>Inputs:</strong> None required.</li>
+<li><strong>Process:</strong> Register service worker and cache assets.  </li>
+<li><strong>Output:</strong> App usable offline.  </li>
+<li><strong>Errors:</strong> Cache failure or sync delay.</li>
+</ul>
+<h2 id="212non-functional-requirements">2.1.2Non-Functional Requirements</h2>
 <h3 id="nfr-01-security">NFR-01: Security</h3>
 <ul>
 <li>Passwords must be securely hashed before storing in the database.  </li>
@@ -327,7 +305,7 @@ It solves the real-world problem of disorganized recipe storage and lack of pers
 <li>Follow a clear folder structure separating frontend, backend, and database components.</li>
 </ul>
 <hr/>
-<h3 id="technical-requirements">Technical Requirements</h3>
+<h3 id="22technical-requirements">2.2.Technical Requirements</h3>
 <table>
 <thead>
 <tr>
@@ -375,7 +353,7 @@ It solves the real-world problem of disorganized recipe storage and lack of pers
 </tbody>
 </table>
 <hr/>
-<h2 id="user-roles">User-roles</h2>
+<h3 id="23user-roles">2.3.User-roles</h3>
 <div class="mermaid">
 flowchart TB
     %% Define Roles
