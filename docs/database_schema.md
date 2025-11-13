@@ -1,4 +1,4 @@
-# Database Schema
+## Database Schema
 
 This section documents the database schema exactly as implemented in the project’s model files.  
 The database uses **MongoDB** with **Mongoose**, and all models include `{ timestamps: true }`  
@@ -6,21 +6,21 @@ to automatically add `createdAt`, `updatedAt` and `deletedAt` fields.
 
 ---
 
-## 1. Overview
+### 1. Overview
 
 The Food Recipe Web App database consists of three main collections:
 
 | Collection | Description |
 |-------------|--------------|
-| **Favourite** | Authorised user can customise their recipes what they like |
-| **User** | Regular users who create, update, and manage recipes |
+| **Favourites** | Authorised user can customise their recipes what they like |
+| **Users** | Regular users who create, update, and manage recipes |
 | **Recipes** | Stores recipe details and links to their creators |
 <!-- 
 Each collection is connected through **ObjectId references**, creating logical relationships (similar to SQL joins). -->
 
 ---
 
-## 2. Collections and Fields
+### 2. Collections and Fields
 
 ### 🧩 Admin Collection
 
@@ -48,19 +48,19 @@ Each collection is connected through **ObjectId references**, creating logical r
 
 ---
 
-## 3. Database-Diagram
+### 3. Database-Diagram
 
 ```mermaid
 erDiagram
  
 
-    FAVORITE {
+    FAVORITES {
         ObjectId _id PK 
-        ObjectId user FK "ref: USERS"
-        ObjectId recipe FK "ref: RECIPES"
+        ObjectId userId FK "ref: USERS._id"
+        ObjectId recipeId FK "ref: RECIPES._id"
         Date createdAt
         Date updatedAt
-        Date deletedat
+        Date deletedAt
     }
 
     USERS {
@@ -69,7 +69,7 @@ erDiagram
         String password "required" 
         Date createdAt
         Date updatedAt
-        Date deletedat
+        Date deletedAt
     }
 
     RECIPES {
@@ -79,15 +79,15 @@ erDiagram
         String instructions "required"
         String time
         String coverImage
-        ObjectId createdBy FK "ref: USERS"
+        ObjectId createdById FK "ref: USERS._id"
         Date createdAt
         Date updatedAt
-        Date deletedat
+        Date deletedAt
     }
 
     RECIPES }o--|| USERS : "createdBy"
-    FAVORITE }o--|| USERS : "user"
-    FAVORITE }o--|| RECIPES : "recipe"
+    FAVORITES }o--|| USERS : "user"
+    FAVORITES }o--|| RECIPES : "recipe"
 
 
 ```

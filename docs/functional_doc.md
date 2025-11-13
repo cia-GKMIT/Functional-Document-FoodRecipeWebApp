@@ -1,6 +1,6 @@
-# Food Recipe Web App — Functional Document
+## Food Recipe Web App — Functional Document
 
-## Overview
+### 1.Overview
 
 This document covers the main features, requirements, and data flow of my **Food Recipe Web App**.  
 It’s a full-stack **MERN** application that lets users register, log in, and manage their own recipes with image uploads.  
@@ -8,13 +8,13 @@ I’m also adding **PWA (Progressive Web App)** support so it can work smoothly 
 
 ---
 
-## Project Purpose
+### 1.1.Project Purpose
 The Food Recipe Web App provides an online platform for users to create, manage, and share their cooking recipes.  
 It solves the real-world problem of disorganized recipe storage and lack of personalization in existing platforms like YouTube or Pinterest.
 
 ---
 
-## Core Features
+### 1.2.Core Features
 
 | Feature | Description | Type |
 |----------|--------------|------|
@@ -30,7 +30,7 @@ It solves the real-world problem of disorganized recipe storage and lack of pers
 | PWA (Progressive Web App) | Allows the app to be installed and accessed from mobile devices with offline support. | Non-Functional |
 
 ---
-## System Overview
+### 2.System Overview
 
 ```mermaid
 flowchart LR
@@ -52,9 +52,12 @@ flowchart LR
 
 ```
 
-## System Requirements
+## 2.1.System Requirements
 
-## Functional Requirements 
+The System Requirements section outlines the functional and non-functional behaviors of the application. It defines what the system must do, how it should perform, and the constraints it must follow to ensure reliability and usability.
+
+### 2.1.1 Functional Requirements 
+---
 
 ### FR-01: User Registration
 - **Description:** Users can register using name, email, and password.  
@@ -128,24 +131,24 @@ flowchart LR
 
 ---
 
-### FR-09: Progressive Web App (PWA)
-- **Description:** Enable app install and offline access.  
-- **Inputs:** —  
-- **Process:** Register service worker and cache assets.  
-- **Output:** App usable offline.  
-- **Errors:** Cache failure or sync delay.
-
----
-
-### FR-10: Searching Recipes
+### FR-09: Searching Recipes
 - **Description:** Allows users to search for recipes by name or title.
 - **Inputs:**  Recipe name or title (string).
 - **Process:** User enters a keyword; the system searches stored recipe titles for matches.
 - **Output:** List of matching recipes with title, image, ingredients, and time.
-- **Errors:** 400 (missing input), 404 (no matches found).
+- **Errors:** No matching recipes found.
+
+---
+
+### FR-10: Progressive Web App (PWA)
+- **Description:** Enable app install and offline access.     
+- **Inputs:** None required.
+- **Process:** Register service worker and cache assets.  
+- **Output:** App usable offline.  
+- **Errors:** Cache failure or sync delay.
 
 
-## Non-Functional Requirements
+## 2.1.2Non-Functional Requirements
 
 ### NFR-01: Security
 - Passwords must be securely hashed before storing in the database.  
@@ -179,7 +182,7 @@ flowchart LR
 ---
 
 
-### Technical Requirements
+### 2.2.Technical Requirements
 
 | Component | Technology | Purpose |
 |------------|-------------|----------|
@@ -193,7 +196,7 @@ flowchart LR
 
 ---
 
-## User-roles
+### 2.3.User-roles
 
 ```mermaid
 

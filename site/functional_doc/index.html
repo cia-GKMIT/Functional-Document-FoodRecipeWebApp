@@ -379,26 +379,16 @@ It solves the real-world problem of disorganized recipe storage and lack of pers
 <div class="mermaid">
 flowchart TB
     %% Define Roles
-    A[Admin]
     B[Registered User]
     C[Guest User]
 
     %% Define Permissions
-    P1[Manage Users and Roles]
-    P2[Manage All Recipes]
     P3[Create Recipe]
     P4[Edit or Delete Own Recipe]
     P5[Mark Favorite Recipes]
     P6[Customize Favorite Recipes]
     P7[View All Recipes]
     P8[search Recipes]
-
-
-    %% Admin Permissions
-    A --&gt; P1
-    A --&gt; P2
-    A --&gt; P7
-    A --&gt; P8
 
 
     %% Registered User Permissions

@@ -1,4 +1,4 @@
-# System Architecture & Data Flow
+## System Architecture & Data Flow
 
 This section explains the overall system setup and internal data movement in the project.
 
@@ -20,15 +20,15 @@ This setup ensures high availability, scalability, and separation of concerns be
 ---
 
 
-## AWS Deployment Architecture
+### AWS Deployment Architecture
 
 Below is the structure showing how the application is deployed using AWS services.
 
-![AWS Deployment Structure](AWS architecture-2.png)
+![AWS Deployment Structure](AWS architecture-6.png)
 
 ---
 
-## Data Flow Diagram (DFD)
+### Data Flow Diagram (DFD)
 
 The DFD illustrates how data moves across the system — from users to the database and backend processes.
 
@@ -64,7 +64,7 @@ sequenceDiagram
 
 ---
 
-# Authorization — Food Recipe Web App
+## Authorization — Food Recipe Web App
 
 The **Food Recipe Web App** uses **JWT-based authorization** to manage access to its backend routes.  
 There are **two user types** in the system:
@@ -100,14 +100,14 @@ flowchart TD
 ```
 
 ---
-# API Reference
+## API Reference
 
 This table lists all API endpoints currently implemented (or recommended) in the **Food Recipe Web App**.  
 The routes are grouped by functional modules: **Auth/User**, **Recipes**, **Static Assets**, and **Favorites**.
 
 ---
 
-## Auth / User
+### Auth / User
 
 
 | **Method** | **Path** | **Auth** | **Request (body / params / query)** | **Notes** |
@@ -118,19 +118,19 @@ The routes are grouped by functional modules: **Auth/User**, **Recipes**, **Stat
 
 ---
 
-## Recipes
+### Recipes
 
 | **Method** | **Path** | **Auth** | **Request (body / params / query)** | **Notes** |
 |:-----------:|:---------:|:--------:|:------------------------------------:|:-----------:|
-| **GET** | `/recipe/` | No | — | Returns `[ recipe, recipe]`; each recipe includes model fields  |
-| **GET** | `/recipe/:id` | No | Path param: recipe ID | Returns a single recipe object. |
-| **POST** | `/recipe/` | Yes | multipart/form-data `{ ex file, title}` | Creates a new recipe. Multer saves file to `backend/public/images` . |
-| **PUT** | `/recipe/:id` | Optional | multipart/form-data or JSON | Updates an existing recipe.  |
-| **DELETE** | `/recipe/:id` | Optional | Path param: recipe ID | Deletes recipe.  |
+| **GET** | `/recipes/` | No | — | Returns `[ recipe, recipe]`; each recipe includes model fields  |
+| **GET** | `/recipes/:id` | No | Path param: recipe ID | Returns a single recipe object. |
+| **POST** | `/recipes/` | Yes | multipart/form-data `{ ex file, title}` | Creates a new recipe. Multer saves file to `backend/public/images` . |
+| **PUT** | `/recipes/:id` | Optional | multipart/form-data or JSON | Updates an existing recipe.  |
+| **DELETE** | `/recipes/:id` | Optional | Path param: recipe ID | Deletes recipe.  |
 
 ---
 
-## Static Assets
+### Static Assets
 
 | **Method** | **Path** | **Auth** | **Request (body / params / query)** | **Notes** |
 |:-----------:|:---------:|:--------:|:------------------------------------:|:-----------:|
@@ -138,19 +138,19 @@ The routes are grouped by functional modules: **Auth/User**, **Recipes**, **Stat
 
 ---
 
-## Favorites (Server-Side Persistence)
+### Favorites (Server-Side Persistence)
 
 | **Method** | **Path** | **Auth** | **Request (body / params / query)** | **Notes** |
 |:-----------:|:---------:|:--------:|:------------------------------------:|:-----------:|
-| **POST** | `/favorite` | Yes | JSON `{ "recipeId": "<id>" }` | Creates a favorite document . |
-| **DELETE** | `/favorite/:recipeId` | Yes | Path param: recipeId | Removes favorite for the current user. |
-| **GET** | `/favorite/me` | Yes | — | Returns `[ favorite doc (populated with recipe) ]`. |
-| **POST** | `/favorite/migrate` | Yes | JSON `{ "recipeIds" }` | Migrates localStorage favorites to DB on login. |
+| **POST** | `/favorites` | Yes | JSON `{ "recipeId": "<id>" }` | Creates a favorite document . |
+| **DELETE** | `/favorites/:recipeId` | Yes | Path param: recipeId | Removes favorite for the current user. |
+| **GET** | `/favorites/me` | Yes | — | Returns `[ favorite doc (populated with recipe) ]`. |
+| **POST** | `/favorites/migrate` | Yes | JSON `{ "recipeIds" }` | Migrates localStorage favorites to DB on login. |
 
 
 ---
 
-# Testing Frameworks
+## Testing Frameworks
 
 The project follows a minimal and efficient testing approach focusing on verifying key logic and API endpoints.  
 This setup uses **Jest** for automated testing and **Postman** for manual API validation.
@@ -163,7 +163,7 @@ This setup uses **Jest** for automated testing and **Postman** for manual API va
 
 ---
 
-# Tech Stack
+## Tech Stack
 
 The **Food Recipe Web App** is a full-stack MERN (MongoDB, Express.js, React, Node.js) project designed for recipe management, authentication, and image handling.  
 The table below lists all major technologies and their specific roles.
