@@ -2,144 +2,155 @@
 
 ## 1. Document Details
 **Project Name:** Food Recipe Management Web Application  
-**Document Version:** 1.0    
-**Date:** 13/11/24
-**Reviewed By:** —  Rashmi
+**Document Version:** 1.1  
+**Date:** 17/11/24  
+**Reviewed By:** Rashmi  
 
 ---
 
 ## 2. Objective
-The objective of this test plan is to validate all functional and non-functional requirements of the Recipe Management Web Application. This includes ensuring the correctness, stability, usability, and reliability of all system features such as authentication, recipe CRUD operations, favorites, search, and PWA offline support.
+The objective of this test plan is to validate all functional and non-functional requirements of the Recipe Management Web Application. The goal is to ensure correctness, reliability, usability, security, and stability across all modules including authentication, recipe CRUD, search, favorites, and PWA offline features.
 
 ---
 
 ## 3. Scope
 
-### In Scope
+### 3.1 In Scope
 - User Registration & Login  
 - Authentication & Authorization (JWT)  
-- Create, View, Edit, Delete Recipes  
-- Favorite/Unfavorite Recipes  
-- Search Recipes  
-- PWA offline accessibility  
-- Responsiveness and basic UI validation  
+- Recipe CRUD (Create, View, Edit, Delete)  
+- Add/Remove Favorites  
+- Search functionality  
+- PWA offline support  
+- UI Responsiveness  
 - API testing using Postman  
+- Basic error-handling validation  
 
-### Out of Scope
-- Performance load testing  
-- Penetration testing / security audit  
-- Integration with third-party services  
-- Multi-language support  
+### 3.2 Functional Items Present in the Project but Out of Scope
+
+- Soft delete internal behavior in MongoDB (only UI delete flow will be tested)  
+- Advanced form validations (max image size, password strength, special character rules)  
+- Deep PWA caching, cache versioning, background sync  
+- Detailed JWT token scenarios (expiry, token refresh, tampered token handling)  
+- Full responsiveness testing on all screen sizes (only basic mobile & desktop covered)  
+- Image upload edge cases (large file sizes, unsupported formats, high-resolution images)  
+- Search accuracy, relevancy scoring, and fuzzy search behavior  
+
 
 ---
 
 ## 4. Test Strategy / Approach
 
-### Manual Testing
-- UI and functional flows tested manually in browser.
-- Recipe CRUD, Favorites, Search, and Authentication validated using user flows.
+### 4.1 Manual Testing
+Manual functional testing will be performed on UI screens, validating workflow, usability, and response accuracy.
 
-### API Testing
-- All API endpoints (e.g., `/recipes`, `/users`, `/favorites`) tested using Postman.
-- Validate response codes, JSON structure, and errors.
+#### Manual Testing Scenarios & Expected Results
 
-### Unit Testing (Optional)
-- Jest for backend logic.
-- React Testing Library for UI components (if needed).
-
-### Environment
-- **Frontend:** Vercel  
-- **Backend:** Node.js + Express  
-- **Database:** MongoDB Atlas  
-- **Browsers:** Chrome, Firefox, Edge  
-- **Devices:** Desktop & Mobile  
+| **Scenario** | **Expected Result** |
+|--------------|----------------------|
+| Register with valid details | User account created successfully |
+| Register with an existing email | Duplicate email error displayed |
+| Login with correct credentials | User redirected to dashboard |
+| Login with incorrect credentials | Error message shown |
+| Create recipe with all required fields | Recipe successfully created |
+| Create recipe with missing fields | Validation error shown |
+| Edit recipe as owner | Recipe updated successfully |
+| Edit recipe as non-owner | Access denied |
+| Delete recipe as owner | Recipe removed |
+| Add recipe to favorites | Recipe added to favorites list |
+| Remove recipe from favorites | Recipe removed from favorites |
+| Search by keyword | Matching recipes displayed |
+| Search with no match | “No recipes found” message |
+| PWA offline mode | Cached pages accessible offline |
 
 ---
 
-## 5. Features to be Tested
+### 4.2 API Testing (Postman & Thunder Client)
+All backend endpoints will be validated for status codes, response bodies, error handling, and authentication behavior.
 
-### FR-01: User Registration
-- Validate registration with valid/invalid data
-- Check duplicate email handling
+#### API Test Cases (Elaborated)
 
-### FR-02: User Login
-- Validate correct login
-- Invalid password/email cases
+##### Users API
+| **API** | **Description** | **Expected Result** |
+|---------|------------------|----------------------|
+| POST `/users/register` | Register a new user | 201 Created |
+| POST `/users/login` | Authenticate user | 200 OK + JWT |
+| POST `/users/login` (invalid) | Wrong password/email | 401 Unauthorized |
 
-### FR-03: JWT Authentication
-- Access protected routes with valid token
-- Ensure access denied without/invalid token
+##### Recipes API
+| **API** | **Description** | **Expected Result** |
+|---------|------------------|----------------------|
+| GET `/recipes` | Fetch all recipes | 200 OK + list |
+| POST `/recipes` | Create recipe | 201 Created |
+| PUT `/recipes/:id` | Update recipe | 200 OK |
+| DELETE `/recipes/:id` | Delete recipe | 200 OK |
 
-### FR-04: Create Recipe
-- Add recipe with all required fields
-- Upload image validation
-- Missing fields error handling
+##### Favorites API
+| **API** | **Description** | **Expected Result** |
+|---------|------------------|----------------------|
+| POST `/favorites/:id` | Add recipe to favorites | 200 OK |
+| DELETE `/favorites/:id` | Remove favorite | 200 OK |
 
-### FR-05: View Recipes
-- Display all recipes  
-- Handle empty recipe list
+##### Search API
+| **API** | **Expected Result** |
+|---------|----------------------|
+| GET `/recipes?search=keyword` | 200 OK + filtered results |
 
-### FR-06: Edit Recipe
-- Only creator should edit  
-- Validate updated fields
+---
 
-### FR-07: Delete Recipe
-- Validate delete action by owner only  
-- Soft delete (if applicable)
+## 5. Features to Be Tested
 
-### FR-08: Favorite Recipes
-- Add/remove favorite  
-- Ensure no duplicate favorites
-
-### FR-09: Search Recipes
-- Search by keyword  
-- No results scenario  
-- Case-insensitive match
-
-### FR-10: PWA
-- App install prompt  
-- Offline page accessibility  
-- Asset caching validation  
+### 5.1 Functional Requirements
+- FR-01 User Registration  
+- FR-02 User Login  
+- FR-03 JWT Authentication  
+- FR-04 Create Recipe  
+- FR-05 View Recipes  
+- FR-06 Edit Recipe  
+- FR-07 Delete Recipe  
+- FR-08 Favorite Recipes  
+- FR-09 Search Recipes  
+- FR-10 PWA Offline Support  
 
 ---
 
 ## 6. Entry Criteria
-- All required features developed  
-- Backend & database running  
-- Test data prepared  
-- API endpoints accessible  
+- Features developed & unit tested  
+- API server running  
+- Test data available  
+- Stable test environment  
 
 ---
 
 ## 7. Exit Criteria
 - All test cases executed  
-- No critical or major bugs open  
+- No critical/major defects open  
 - Regression completed  
-- QA/Tester's approval  
+- QA approval received  
 
 ---
 
 ## 8. Risks & Mitigation
 
-### Risks
-- Unclear requirements  
-- Deployment failure  
-- Inconsistent environments  
-- Tight deadlines  
+### 8.1 Risks
+- Requirement changes  
+- Deployment issues  
+- Data inconsistency  
+- Environment instability  
 
-### Mitigation
-- Frequent communication with developer/mentor  
-- Maintain a stable testing environment  
-- Early bug reporting  
-- Daily sync updates  
+### 8.2 Mitigation
+- Regular communication with developer  
+- Early defect reporting  
+- Stable test environment  
+- Daily status sync  
 
 ---
 
 ## 9. Test Deliverables
-- Test cases  
-- Test execution report  
-- Defect report  
-- Regression report  
-- Final test summary  
+- Test Case Document  
+- Test Execution Report  
+- Defect Report  
+- Regression Summary  
+- Final Test Summary Report  
 
 ---

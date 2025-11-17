@@ -56,8 +56,10 @@ flowchart LR
 
 The System Requirements section outlines the functional and non-functional behaviors of the application. It defines what the system must do, how it should perform, and the constraints it must follow to ensure reliability and usability.
 
-### 2.1.1 Functional Requirements 
 ---
+
+### 2.1.1 Functional Requirements 
+
 
 ### FR-01: User Registration
 - **Description:** Users can register using name, email, and password.  

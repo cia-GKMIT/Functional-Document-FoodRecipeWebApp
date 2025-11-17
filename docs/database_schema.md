@@ -98,4 +98,5 @@ To prevent duplicate recipe titles for the same user, a **compound unique index*
 
 ```js
 recipeSchema.index({ title: 1, createdBy: 1 }, { unique: true });
+
 ```
