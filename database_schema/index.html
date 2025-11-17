@@ -209,6 +209,7 @@ Each collection is connected through **ObjectId references**, creating logical r
 <h3 id="compound-index-title-createdby">Compound Index (Title + CreatedBy)</h3>
 <p>To prevent duplicate recipe titles for the same user, a <strong>compound unique index</strong> is added:</p>
 <pre><code class="language-js">recipeSchema.index({ title: 1, createdBy: 1 }, { unique: true });
+
 </code></pre></div>
 </div>
 </div>

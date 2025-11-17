@@ -102,7 +102,7 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#5-features-to-be-tested" class="nav-link">5. Features to be Tested</a>
+            <li class="nav-item" data-bs-level="2"><a href="#5-features-to-be-tested" class="nav-link">5. Features to Be Tested</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -132,152 +132,262 @@
 <h1 id="test-plan">Test Plan</h1>
 <h2 id="1-document-details">1. Document Details</h2>
 <p><strong>Project Name:</strong> Food Recipe Management Web Application<br />
-<strong>Document Version:</strong> 1.0  <br />
-<strong>Date:</strong> 13/11/24
-<strong>Reviewed By:</strong> —  Rashmi</p>
+<strong>Document Version:</strong> 1.1<br />
+<strong>Date:</strong> 17/11/24<br />
+<strong>Reviewed By:</strong> Rashmi  </p>
 <hr />
 <h2 id="2-objective">2. Objective</h2>
-<p>The objective of this test plan is to validate all functional and non-functional requirements of the Recipe Management Web Application. This includes ensuring the correctness, stability, usability, and reliability of all system features such as authentication, recipe CRUD operations, favorites, search, and PWA offline support.</p>
+<p>The objective of this test plan is to validate all functional and non-functional requirements of the Recipe Management Web Application. The goal is to ensure correctness, reliability, usability, security, and stability across all modules including authentication, recipe CRUD, search, favorites, and PWA offline features.</p>
 <hr />
 <h2 id="3-scope">3. Scope</h2>
-<h3 id="in-scope">In Scope</h3>
+<h3 id="31-in-scope">3.1 In Scope</h3>
 <ul>
 <li>User Registration &amp; Login  </li>
 <li>Authentication &amp; Authorization (JWT)  </li>
-<li>Create, View, Edit, Delete Recipes  </li>
-<li>Favorite/Unfavorite Recipes  </li>
-<li>Search Recipes  </li>
-<li>PWA offline accessibility  </li>
-<li>Responsiveness and basic UI validation  </li>
+<li>Recipe CRUD (Create, View, Edit, Delete)  </li>
+<li>Add/Remove Favorites  </li>
+<li>Search functionality  </li>
+<li>PWA offline support  </li>
+<li>UI Responsiveness  </li>
 <li>API testing using Postman  </li>
+<li>Basic error-handling validation  </li>
 </ul>
-<h3 id="out-of-scope">Out of Scope</h3>
+<h3 id="32-functional-items-present-in-the-project-but-out-of-scope">3.2 Functional Items Present in the Project but Out of Scope</h3>
 <ul>
-<li>Performance load testing  </li>
-<li>Penetration testing / security audit  </li>
-<li>Integration with third-party services  </li>
-<li>Multi-language support  </li>
+<li>Soft delete internal behavior in MongoDB (only UI delete flow will be tested)  </li>
+<li>Advanced form validations (max image size, password strength, special character rules)  </li>
+<li>Deep PWA caching, cache versioning, background sync  </li>
+<li>Detailed JWT token scenarios (expiry, token refresh, tampered token handling)  </li>
+<li>Full responsiveness testing on all screen sizes (only basic mobile &amp; desktop covered)  </li>
+<li>Image upload edge cases (large file sizes, unsupported formats, high-resolution images)  </li>
+<li>Search accuracy, relevancy scoring, and fuzzy search behavior  </li>
 </ul>
 <hr />
 <h2 id="4-test-strategy-approach">4. Test Strategy / Approach</h2>
-<h3 id="manual-testing">Manual Testing</h3>
-<ul>
-<li>UI and functional flows tested manually in browser.</li>
-<li>Recipe CRUD, Favorites, Search, and Authentication validated using user flows.</li>
-</ul>
-<h3 id="api-testing">API Testing</h3>
-<ul>
-<li>All API endpoints (e.g., <code>/recipes</code>, <code>/users</code>, <code>/favorites</code>) tested using Postman.</li>
-<li>Validate response codes, JSON structure, and errors.</li>
-</ul>
-<h3 id="unit-testing-optional">Unit Testing (Optional)</h3>
-<ul>
-<li>Jest for backend logic.</li>
-<li>React Testing Library for UI components (if needed).</li>
-</ul>
-<h3 id="environment">Environment</h3>
-<ul>
-<li><strong>Frontend:</strong> Vercel  </li>
-<li><strong>Backend:</strong> Node.js + Express  </li>
-<li><strong>Database:</strong> MongoDB Atlas  </li>
-<li><strong>Browsers:</strong> Chrome, Firefox, Edge  </li>
-<li><strong>Devices:</strong> Desktop &amp; Mobile  </li>
-</ul>
+<h3 id="41-manual-testing">4.1 Manual Testing</h3>
+<p>Manual functional testing will be performed on UI screens, validating workflow, usability, and response accuracy.</p>
+<h4 id="manual-testing-scenarios-expected-results">Manual Testing Scenarios &amp; Expected Results</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Scenario</strong></th>
+<th><strong>Expected Result</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Register with valid details</td>
+<td>User account created successfully</td>
+</tr>
+<tr>
+<td>Register with an existing email</td>
+<td>Duplicate email error displayed</td>
+</tr>
+<tr>
+<td>Login with correct credentials</td>
+<td>User redirected to dashboard</td>
+</tr>
+<tr>
+<td>Login with incorrect credentials</td>
+<td>Error message shown</td>
+</tr>
+<tr>
+<td>Create recipe with all required fields</td>
+<td>Recipe successfully created</td>
+</tr>
+<tr>
+<td>Create recipe with missing fields</td>
+<td>Validation error shown</td>
+</tr>
+<tr>
+<td>Edit recipe as owner</td>
+<td>Recipe updated successfully</td>
+</tr>
+<tr>
+<td>Edit recipe as non-owner</td>
+<td>Access denied</td>
+</tr>
+<tr>
+<td>Delete recipe as owner</td>
+<td>Recipe removed</td>
+</tr>
+<tr>
+<td>Add recipe to favorites</td>
+<td>Recipe added to favorites list</td>
+</tr>
+<tr>
+<td>Remove recipe from favorites</td>
+<td>Recipe removed from favorites</td>
+</tr>
+<tr>
+<td>Search by keyword</td>
+<td>Matching recipes displayed</td>
+</tr>
+<tr>
+<td>Search with no match</td>
+<td>“No recipes found” message</td>
+</tr>
+<tr>
+<td>PWA offline mode</td>
+<td>Cached pages accessible offline</td>
+</tr>
+</tbody>
+</table>
 <hr />
-<h2 id="5-features-to-be-tested">5. Features to be Tested</h2>
-<h3 id="fr-01-user-registration">FR-01: User Registration</h3>
+<h3 id="42-api-testing-postman-thunder-client">4.2 API Testing (Postman &amp; Thunder Client)</h3>
+<p>All backend endpoints will be validated for status codes, response bodies, error handling, and authentication behavior.</p>
+<h4 id="api-test-cases-elaborated">API Test Cases (Elaborated)</h4>
+<h5 id="users-api">Users API</h5>
+<table>
+<thead>
+<tr>
+<th><strong>API</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Expected Result</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>POST <code>/users/register</code></td>
+<td>Register a new user</td>
+<td>201 Created</td>
+</tr>
+<tr>
+<td>POST <code>/users/login</code></td>
+<td>Authenticate user</td>
+<td>200 OK + JWT</td>
+</tr>
+<tr>
+<td>POST <code>/users/login</code> (invalid)</td>
+<td>Wrong password/email</td>
+<td>401 Unauthorized</td>
+</tr>
+</tbody>
+</table>
+<h5 id="recipes-api">Recipes API</h5>
+<table>
+<thead>
+<tr>
+<th><strong>API</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Expected Result</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET <code>/recipes</code></td>
+<td>Fetch all recipes</td>
+<td>200 OK + list</td>
+</tr>
+<tr>
+<td>POST <code>/recipes</code></td>
+<td>Create recipe</td>
+<td>201 Created</td>
+</tr>
+<tr>
+<td>PUT <code>/recipes/:id</code></td>
+<td>Update recipe</td>
+<td>200 OK</td>
+</tr>
+<tr>
+<td>DELETE <code>/recipes/:id</code></td>
+<td>Delete recipe</td>
+<td>200 OK</td>
+</tr>
+</tbody>
+</table>
+<h5 id="favorites-api">Favorites API</h5>
+<table>
+<thead>
+<tr>
+<th><strong>API</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Expected Result</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>POST <code>/favorites/:id</code></td>
+<td>Add recipe to favorites</td>
+<td>200 OK</td>
+</tr>
+<tr>
+<td>DELETE <code>/favorites/:id</code></td>
+<td>Remove favorite</td>
+<td>200 OK</td>
+</tr>
+</tbody>
+</table>
+<h5 id="search-api">Search API</h5>
+<table>
+<thead>
+<tr>
+<th><strong>API</strong></th>
+<th><strong>Expected Result</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET <code>/recipes?search=keyword</code></td>
+<td>200 OK + filtered results</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-features-to-be-tested">5. Features to Be Tested</h2>
+<h3 id="51-functional-requirements">5.1 Functional Requirements</h3>
 <ul>
-<li>Validate registration with valid/invalid data</li>
-<li>Check duplicate email handling</li>
-</ul>
-<h3 id="fr-02-user-login">FR-02: User Login</h3>
-<ul>
-<li>Validate correct login</li>
-<li>Invalid password/email cases</li>
-</ul>
-<h3 id="fr-03-jwt-authentication">FR-03: JWT Authentication</h3>
-<ul>
-<li>Access protected routes with valid token</li>
-<li>Ensure access denied without/invalid token</li>
-</ul>
-<h3 id="fr-04-create-recipe">FR-04: Create Recipe</h3>
-<ul>
-<li>Add recipe with all required fields</li>
-<li>Upload image validation</li>
-<li>Missing fields error handling</li>
-</ul>
-<h3 id="fr-05-view-recipes">FR-05: View Recipes</h3>
-<ul>
-<li>Display all recipes  </li>
-<li>Handle empty recipe list</li>
-</ul>
-<h3 id="fr-06-edit-recipe">FR-06: Edit Recipe</h3>
-<ul>
-<li>Only creator should edit  </li>
-<li>Validate updated fields</li>
-</ul>
-<h3 id="fr-07-delete-recipe">FR-07: Delete Recipe</h3>
-<ul>
-<li>Validate delete action by owner only  </li>
-<li>Soft delete (if applicable)</li>
-</ul>
-<h3 id="fr-08-favorite-recipes">FR-08: Favorite Recipes</h3>
-<ul>
-<li>Add/remove favorite  </li>
-<li>Ensure no duplicate favorites</li>
-</ul>
-<h3 id="fr-09-search-recipes">FR-09: Search Recipes</h3>
-<ul>
-<li>Search by keyword  </li>
-<li>No results scenario  </li>
-<li>Case-insensitive match</li>
-</ul>
-<h3 id="fr-10-pwa">FR-10: PWA</h3>
-<ul>
-<li>App install prompt  </li>
-<li>Offline page accessibility  </li>
-<li>Asset caching validation  </li>
+<li>FR-01 User Registration  </li>
+<li>FR-02 User Login  </li>
+<li>FR-03 JWT Authentication  </li>
+<li>FR-04 Create Recipe  </li>
+<li>FR-05 View Recipes  </li>
+<li>FR-06 Edit Recipe  </li>
+<li>FR-07 Delete Recipe  </li>
+<li>FR-08 Favorite Recipes  </li>
+<li>FR-09 Search Recipes  </li>
+<li>FR-10 PWA Offline Support  </li>
 </ul>
 <hr />
 <h2 id="6-entry-criteria">6. Entry Criteria</h2>
 <ul>
-<li>All required features developed  </li>
-<li>Backend &amp; database running  </li>
-<li>Test data prepared  </li>
-<li>API endpoints accessible  </li>
+<li>Features developed &amp; unit tested  </li>
+<li>API server running  </li>
+<li>Test data available  </li>
+<li>Stable test environment  </li>
 </ul>
 <hr />
 <h2 id="7-exit-criteria">7. Exit Criteria</h2>
 <ul>
 <li>All test cases executed  </li>
-<li>No critical or major bugs open  </li>
+<li>No critical/major defects open  </li>
 <li>Regression completed  </li>
-<li>QA/Tester's approval  </li>
+<li>QA approval received  </li>
 </ul>
 <hr />
 <h2 id="8-risks-mitigation">8. Risks &amp; Mitigation</h2>
-<h3 id="risks">Risks</h3>
+<h3 id="81-risks">8.1 Risks</h3>
 <ul>
-<li>Unclear requirements  </li>
-<li>Deployment failure  </li>
-<li>Inconsistent environments  </li>
-<li>Tight deadlines  </li>
+<li>Requirement changes  </li>
+<li>Deployment issues  </li>
+<li>Data inconsistency  </li>
+<li>Environment instability  </li>
 </ul>
-<h3 id="mitigation">Mitigation</h3>
+<h3 id="82-mitigation">8.2 Mitigation</h3>
 <ul>
-<li>Frequent communication with developer/mentor  </li>
-<li>Maintain a stable testing environment  </li>
-<li>Early bug reporting  </li>
-<li>Daily sync updates  </li>
+<li>Regular communication with developer  </li>
+<li>Early defect reporting  </li>
+<li>Stable test environment  </li>
+<li>Daily status sync  </li>
 </ul>
 <hr />
 <h2 id="9-test-deliverables">9. Test Deliverables</h2>
 <ul>
-<li>Test cases  </li>
-<li>Test execution report  </li>
-<li>Defect report  </li>
-<li>Regression report  </li>
-<li>Final test summary  </li>
+<li>Test Case Document  </li>
+<li>Test Execution Report  </li>
+<li>Defect Report  </li>
+<li>Regression Summary  </li>
+<li>Final Test Summary Report  </li>
 </ul>
 <hr /></div>
             </div>
