@@ -128,7 +128,7 @@ It solves the real-world problem of disorganized recipe storage and lack of pers
 </tr>
 <tr>
 <td>Image Upload</td>
-<td>Each recipe supports an image file (handled using Multer).</td>
+<td>Each recipe supports an image file AWS S3 bucket.</td>
 <td>Functional</td>
 </tr>
 <tr>
@@ -170,7 +170,7 @@ It solves the real-world problem of disorganized recipe storage and lack of pers
     A --&gt;|Creates, Updates, Deletes Recipes| B
     A --&gt;|Marks Favorite Recipes or Customizes| B
     A --&gt;|Searches Recipes| B
-    B --&gt;|Handles Authentication using JWT and Image Uploads via Multer| C[(MongoDB Database)]
+    B --&gt;|Handles Authentication using JWT and Image Uploads via S3| C[(MongoDB Database)]
     B --&gt;|Serves API Responses and Business Logic| D[React Frontend and PWA]
     D --&gt;|Displays Recipes, Favorites, and Personalized Data| A
 
@@ -252,11 +252,11 @@ It solves the real-world problem of disorganized recipe storage and lack of pers
 <hr/>
 <h3 id="fr-08-favorite-recipes">FR-08: Favorite Recipes</h3>
 <ul>
-<li><strong>Description:</strong> Users can mark/unmark favorite recipes.  </li>
-<li><strong>Inputs:</strong> Recipe ID, User ID  </li>
-<li><strong>Process:</strong> Toggle favorite status in DB.  </li>
-<li><strong>Output:</strong> Favorites list updated.  </li>
-<li><strong>Errors:</strong> Database write error.</li>
+<li><strong>Description:</strong> Users can mark/unmark recipes as favorites (stored in browser localStorage only).</li>
+<li><strong>Inputs:</strong> Recipe ID</li>
+<li><strong>Process:</strong> Toggle favorite state in localStorage.</li>
+<li><strong>Output:</strong> Updated favorite list in UI.</li>
+<li><strong>Errors:</strong> LocalStorage write error.</li>
 </ul>
 <hr/>
 <h3 id="fr-09-searching-recipes">FR-09: Searching Recipes</h3>
@@ -284,25 +284,19 @@ It solves the real-world problem of disorganized recipe storage and lack of pers
 <li>User data should not be exposed in plain text.</li>
 </ul>
 <hr/>
-<h3 id="nfr-02-responsiveness">NFR-02: Responsiveness</h3>
-<ul>
-<li>Frontend interface should adjust and display properly across different screen sizes and devices.  </li>
-<li>Maintain a consistent layout for both desktop and mobile views.</li>
-</ul>
-<hr/>
-<h3 id="nfr-03-data-handling">NFR-03: Data Handling</h3>
+<h3 id="nfr-02-data-handling">NFR-02: Data Handling</h3>
 <ul>
 <li>Images should be uploaded and stored efficiently without affecting app performance.  </li>
 <li>API endpoints should return structured JSON responses following RESTful conventions.</li>
 </ul>
 <hr/>
-<h3 id="nfr-04-offline-support">NFR-04: Offline Support</h3>
+<h3 id="nfr-03-offline-support">NFR-03: Offline Support</h3>
 <ul>
 <li>The app should provide offline access for key pages and features.  </li>
 <li>Use Progressive Web App (PWA) behavior to make it installable and usable without constant internet.</li>
 </ul>
 <hr/>
-<h3 id="nfr-05-maintainability">NFR-05: Maintainability</h3>
+<h3 id="nfr-04-maintainability">NFR-04: Maintainability</h3>
 <ul>
 <li>Codebase should remain simple and easy to modify.  </li>
 <li>Follow a clear folder structure separating frontend, backend, and database components.</li>
@@ -340,7 +334,7 @@ It solves the real-world problem of disorganized recipe storage and lack of pers
 </tr>
 <tr>
 <td>File Uploads</td>
-<td>Multer</td>
+<td>S3</td>
 <td>Handle recipe images</td>
 </tr>
 <tr>

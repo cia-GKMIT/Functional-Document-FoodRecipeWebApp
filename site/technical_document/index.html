@@ -116,14 +116,14 @@
 <hr/>
 <h3 id="explanation">Explanation</h3>
 <ul>
-<li><strong>Route 53</strong>: Provides the custom domain and DNS routing for the application.  </li>
+<li><strong>Hostinger</strong>: Provides the custom domain and DNS routing for the application.  </li>
 <li><strong>EC2 Instance</strong>: Hosts the Node.js + Express backend service that manages API requests and business logic.  </li>
 <li><strong>S3 Bucket</strong>:  </li>
 <li>Serves static frontend files built from React + Vite.  </li>
 <li>Stores uploaded recipe images and other media assets.  </li>
 <li><strong>MongoDB Atlas</strong>: Cloud-hosted NoSQL database used to persist user accounts, recipes, and favorites.  </li>
 <li><strong>Security</strong>:  </li>
-<li>All API calls are served over HTTPS through Route 53-managed SSL.  </li>
+<li>All API calls are served over HTTPS.  </li>
 <li>JWT tokens secure authentication across sessions.</li>
 </ul>
 <p>This setup ensures high availability, scalability, and separation of concerns between static hosting, compute, and storage.</p>
@@ -294,71 +294,6 @@ The routes are grouped by functional modules: <strong>Auth/User</strong>, <stron
 </tbody>
 </table>
 <hr/>
-<h3 id="static-assets">Static Assets</h3>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;"><strong>Method</strong></th>
-<th style="text-align: center;"><strong>Path</strong></th>
-<th style="text-align: center;"><strong>Auth</strong></th>
-<th style="text-align: center;"><strong>Request (body / params / query)</strong></th>
-<th style="text-align: center;"><strong>Notes</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><strong>GET</strong></td>
-<td style="text-align: center;"><code>/images/:filename</code></td>
-<td style="text-align: center;">No</td>
-<td style="text-align: center;">Path param: filename</td>
-<td style="text-align: center;">Serves static images from <code>backend/public/images/</code>. Use in frontend as <code>http://&lt;host&gt;/images/&lt;coverImage&gt;</code>.</td>
-</tr>
-</tbody>
-</table>
-<hr/>
-<h3 id="favorites-server-side-persistence">Favorites (Server-Side Persistence)</h3>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;"><strong>Method</strong></th>
-<th style="text-align: center;"><strong>Path</strong></th>
-<th style="text-align: center;"><strong>Auth</strong></th>
-<th style="text-align: center;"><strong>Request (body / params / query)</strong></th>
-<th style="text-align: center;"><strong>Notes</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><strong>POST</strong></td>
-<td style="text-align: center;"><code>/favorites</code></td>
-<td style="text-align: center;">Yes</td>
-<td style="text-align: center;">JSON <code>{ "recipeId": "&lt;id&gt;" }</code></td>
-<td style="text-align: center;">Creates a favorite document .</td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong>DELETE</strong></td>
-<td style="text-align: center;"><code>/favorites/:recipeId</code></td>
-<td style="text-align: center;">Yes</td>
-<td style="text-align: center;">Path param: recipeId</td>
-<td style="text-align: center;">Removes favorite for the current user.</td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong>GET</strong></td>
-<td style="text-align: center;"><code>/favorites/me</code></td>
-<td style="text-align: center;">Yes</td>
-<td style="text-align: center;">—</td>
-<td style="text-align: center;">Returns <code>[ favorite doc (populated with recipe) ]</code>.</td>
-</tr>
-<tr>
-<td style="text-align: center;"><strong>POST</strong></td>
-<td style="text-align: center;"><code>/favorites/migrate</code></td>
-<td style="text-align: center;">Yes</td>
-<td style="text-align: center;">JSON <code>{ "recipeIds" }</code></td>
-<td style="text-align: center;">Migrates localStorage favorites to DB on login.</td>
-</tr>
-</tbody>
-</table>
-<hr/>
 <h2 id="testing-frameworks">Testing Frameworks</h2>
 <p>The project follows a minimal and efficient testing approach focusing on verifying key logic and API endpoints.<br/>
 This setup uses <strong>Jest</strong> for automated testing and <strong>Postman</strong> for manual API validation.</p>
@@ -383,7 +318,7 @@ This setup uses <strong>Jest</strong> for automated testing and <strong>Postman<
 <tr>
 <td style="text-align: left;"><strong>API Endpoints</strong></td>
 <td style="text-align: left;"><strong>Postman</strong></td>
-<td style="text-align: left;">Verify API routes such as <code>/login</code>, <code>/signUp</code>, <code>/recipe</code>, and <code>/favorite</code>.</td>
+<td style="text-align: left;">Verify API routes such as <code>/login</code>, <code>/signUp</code>, <code>/recipes</code>, and <code>/users</code>.</td>
 <td style="text-align: left;">Functional / Manual</td>
 <td style="text-align: left;">Manual runs using Postman GUI</td>
 </tr>
@@ -430,12 +365,6 @@ The table below lists all major technologies and their specific roles.</p>
 </tr>
 <tr>
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><strong>Multer</strong></td>
-<td style="text-align: left;">Handle file uploads (recipe images).</td>
-<td style="text-align: left;">Middleware</td>
-</tr>
-<tr>
-<td style="text-align: left;"></td>
 <td style="text-align: left;"><strong>bcrypt</strong></td>
 <td style="text-align: left;">Secure password hashing before storage.</td>
 <td style="text-align: left;">Security</td>
@@ -466,7 +395,7 @@ The table below lists all major technologies and their specific roles.</p>
 </tr>
 <tr>
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><strong>AWS Route 53</strong></td>
+<td style="text-align: left;"><strong>Hostinger</strong></td>
 <td style="text-align: left;">Manage custom domain and DNS routing.</td>
 <td style="text-align: left;">Cloud DNS</td>
 </tr>

@@ -296,28 +296,6 @@
 </tr>
 </tbody>
 </table>
-<h5 id="favorites-api">Favorites API</h5>
-<table>
-<thead>
-<tr>
-<th><strong>API</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Expected Result</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>POST <code>/favorites/:id</code></td>
-<td>Add recipe to favorites</td>
-<td>200 OK</td>
-</tr>
-<tr>
-<td>DELETE <code>/favorites/:id</code></td>
-<td>Remove favorite</td>
-<td>200 OK</td>
-</tr>
-</tbody>
-</table>
 <h5 id="search-api">Search API</h5>
 <table>
 <thead>
@@ -328,7 +306,7 @@
 </thead>
 <tbody>
 <tr>
-<td>GET <code>/recipes?search=keyword</code></td>
+<td>GET <code>/search/:query</code></td>
 <td>200 OK + filtered results</td>
 </tr>
 </tbody>

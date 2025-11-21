@@ -21,7 +21,7 @@ It solves the real-world problem of disorganized recipe storage and lack of pers
 | User Registration/Login | Users can register and log in to manage their recipes. Passwords are stored securely using hashing. | Functional |
 | Authentication (JWT) | Authenticated routes protect recipe creation, updates, and deletion. | Functional |
 | Recipe CRUD Operations | Users can create, view, edit, and delete recipes. | Functional |
-| Image Upload | Each recipe supports an image file AWS S3 bucket. | Functional |
+| Image Upload | Each recipe supports an image via S3 bucket. | Functional |
 | Recipe Listing | Users can browse all available recipes. | Functional |
 | Recipe Details | Users can view full recipe details like ingredients, steps, and image. | Functional |
 | Access Control | Only the recipe owner can edit or delete their own recipes. | Non-Functional |
@@ -38,7 +38,7 @@ flowchart LR
     A -->|Creates, Updates, Deletes Recipes| B
     A -->|Marks Favorite Recipes or Customizes| B
     A -->|Searches Recipes| B
-    B -->|Handles Authentication using JWT and Image Uploads via S3| C[(MongoDB Database)]
+    B -->|Handles Authentication using JWT and Recipe cover Image| C[(MongoDB Atlas)]
     B -->|Serves API Responses and Business Logic| D[React Frontend and PWA]
     D -->|Displays Recipes, Favorites, and Personalized Data| A
 
@@ -184,7 +184,7 @@ The System Requirements section outlines the functional and non-functional behav
 |------------|-------------|----------|
 | Frontend | React + Vite | Build fast, modern, responsive UI |
 | Backend | Node.js + Express.js | Handle APIs and business logic |
-| Database | MongoDB | Store user and recipe data |
+| Database | MongoDB Atlas| Store user and recipe data |
 | Authentication | JWT | Manage secure access |
 | File Uploads | S3 | Handle recipe images |
 | Password Encryption   | bcrypt | Hash and secure passwords |

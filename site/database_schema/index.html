@@ -99,10 +99,6 @@ to automatically add <code>createdAt</code>, <code>updatedAt</code> and <code>de
 </thead>
 <tbody>
 <tr>
-<td><strong>Favourites</strong></td>
-<td>Authorised user can customise their recipes what they like</td>
-</tr>
-<tr>
 <td><strong>Users</strong></td>
 <td>Regular users who create, update, and manage recipes</td>
 </tr>
@@ -169,15 +165,6 @@ Each collection is connected through **ObjectId references**, creating logical r
 <div class="mermaid">erDiagram
 
 
-    FAVORITES {
-        ObjectId _id PK 
-        ObjectId userId FK "ref: USERS._id"
-        ObjectId recipeId FK "ref: RECIPES._id"
-        Date createdAt
-        Date updatedAt
-        Date deletedAt
-    }
-
     USERS {
         ObjectId _id PK 
         String email "required,unique"
@@ -192,8 +179,8 @@ Each collection is connected through **ObjectId references**, creating logical r
         String title "required"
         Array ingredients "required"
         String instructions "required"
-        String time
-        String coverImage
+        String time "required"
+        String coverImage "required"
         ObjectId createdById FK "ref: USERS._id"
         Date createdAt
         Date updatedAt
@@ -201,16 +188,9 @@ Each collection is connected through **ObjectId references**, creating logical r
     }
 
     RECIPES }o--|| USERS : "createdBy"
-    FAVORITES }o--|| USERS : "user"
-    FAVORITES }o--|| RECIPES : "recipe"
 
 
-</div>
-<h3 id="compound-index-title-createdby">Compound Index (Title + CreatedBy)</h3>
-<p>To prevent duplicate recipe titles for the same user, a <strong>compound unique index</strong> is added:</p>
-<pre><code class="language-js">recipeSchema.index({ title: 1, createdBy: 1 }, { unique: true });
-
-</code></pre></div>
+</div></div>
 </div>
 </div>
 <footer class="col-md-12">
