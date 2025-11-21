@@ -128,7 +128,7 @@ It solves the real-world problem of disorganized recipe storage and lack of pers
 </tr>
 <tr>
 <td>Image Upload</td>
-<td>Each recipe supports an image file AWS S3 bucket.</td>
+<td>Each recipe supports an image via S3 bucket.</td>
 <td>Functional</td>
 </tr>
 <tr>
@@ -170,7 +170,7 @@ It solves the real-world problem of disorganized recipe storage and lack of pers
     A --&gt;|Creates, Updates, Deletes Recipes| B
     A --&gt;|Marks Favorite Recipes or Customizes| B
     A --&gt;|Searches Recipes| B
-    B --&gt;|Handles Authentication using JWT and Image Uploads via S3| C[(MongoDB Database)]
+    B --&gt;|Handles Authentication using JWT and Recipe cover Image| C[(MongoDB Atlas)]
     B --&gt;|Serves API Responses and Business Logic| D[React Frontend and PWA]
     D --&gt;|Displays Recipes, Favorites, and Personalized Data| A
 
@@ -324,7 +324,7 @@ It solves the real-world problem of disorganized recipe storage and lack of pers
 </tr>
 <tr>
 <td>Database</td>
-<td>MongoDB</td>
+<td>MongoDB Atlas</td>
 <td>Store user and recipe data</td>
 </tr>
 <tr>
