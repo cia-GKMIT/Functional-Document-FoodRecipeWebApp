@@ -156,7 +156,6 @@ The table below lists all major technologies and their specific roles.
 |  | **PWA (Progressive Web App)** | Enable offline use and “Add to Home Screen” functionality. | Enhancement |
 | **Backend** | **Node.js** | Runtime environment for server-side logic. | Runtime |
 |  | **Express.js** | Lightweight web framework to manage routes and APIs. | Framework |
-|  | **Multer** | Handle file uploads (recipe images). | Middleware |
 |  | **bcrypt** | Secure password hashing before storage. | Security |
 |  | **JWT (JSON Web Token)** | User authentication and authorization. | Security |
 | **Database** | **MongoDB Atlas** | Store user data, recipes, and favorites in the cloud. | Database |

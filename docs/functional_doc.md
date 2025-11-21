@@ -21,7 +21,7 @@ It solves the real-world problem of disorganized recipe storage and lack of pers
 | User Registration/Login | Users can register and log in to manage their recipes. Passwords are stored securely using hashing. | Functional |
 | Authentication (JWT) | Authenticated routes protect recipe creation, updates, and deletion. | Functional |
 | Recipe CRUD Operations | Users can create, view, edit, and delete recipes. | Functional |
-| Image Upload | Each recipe supports an image file (handled using Multer). | Functional |
+| Image Upload | Each recipe supports an image file AWS S3 bucket. | Functional |
 | Recipe Listing | Users can browse all available recipes. | Functional |
 | Recipe Details | Users can view full recipe details like ingredients, steps, and image. | Functional |
 | Access Control | Only the recipe owner can edit or delete their own recipes. | Non-Functional |
@@ -159,25 +159,19 @@ The System Requirements section outlines the functional and non-functional behav
 
 ---
 
-### NFR-02: Responsiveness
-- Frontend interface should adjust and display properly across different screen sizes and devices.  
-- Maintain a consistent layout for both desktop and mobile views.
-
----
-
-### NFR-03: Data Handling
+### NFR-02: Data Handling
 - Images should be uploaded and stored efficiently without affecting app performance.  
 - API endpoints should return structured JSON responses following RESTful conventions.
 
 ---
 
-### NFR-04: Offline Support
+### NFR-03: Offline Support
 - The app should provide offline access for key pages and features.  
 - Use Progressive Web App (PWA) behavior to make it installable and usable without constant internet.
 
 ---
 
-### NFR-05: Maintainability
+### NFR-04: Maintainability
 - Codebase should remain simple and easy to modify.  
 - Follow a clear folder structure separating frontend, backend, and database components.
 
@@ -192,7 +186,7 @@ The System Requirements section outlines the functional and non-functional behav
 | Backend | Node.js + Express.js | Handle APIs and business logic |
 | Database | MongoDB | Store user and recipe data |
 | Authentication | JWT | Manage secure access |
-| File Uploads | Multer | Handle recipe images |
+| File Uploads | S3 | Handle recipe images |
 | Password Encryption   | bcrypt | Hash and secure passwords |
 | PWA | Service Worker  | Enable offline and mobile use |
 
