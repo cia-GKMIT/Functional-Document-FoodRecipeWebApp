@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Manual Test Cases - Food Recipe Web Application - Food Recipe Web App</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../stylesheets/custom.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Food Recipe Web App</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../functional_doc/" class="nav-link">Functional Document</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../business_use_case/" class="nav-link">Business Use Case</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../database_schema/" class="nav-link">Database Schema</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../technical_document/" class="nav-link">Technical Document</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../testplan/" class="nav-link">Test Plan</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#manual-test-cases-food-recipe-web-application" class="nav-link">Manual Test Cases - Food Recipe Web Application</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#test-case-template-legend" class="nav-link">Test Case Template Legend</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#module-1-user-registration" class="nav-link">Module 1: User Registration</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#module-2-user-login" class="nav-link">Module 2: User Login</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#module-3-authentication-authorization" class="nav-link">Module 3: Authentication &amp; Authorization</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#module-4-recipe-crud-operations" class="nav-link">Module 4: Recipe CRUD Operations</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#module-5-favorite-recipes" class="nav-link">Module 5: Favorite Recipes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#module-6-search-functionality" class="nav-link">Module 6: Search Functionality</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#module-7-progressive-web-app-pwa" class="nav-link">Module 7: Progressive Web App (PWA)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#module-8-uiux-testing" class="nav-link">Module 8: UI/UX Testing</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#module-9-security-testing" class="nav-link">Module 9: Security Testing</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#test-execution-summary" class="nav-link">Test Execution Summary</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#test-environment-details" class="nav-link">Test Environment Details</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="manual-test-cases-food-recipe-web-application">Manual Test Cases - Food Recipe Web Application</h1>
+<p><strong>Project Name:</strong> Food Recipe Management Web Application<br />
+<strong>Document Version:</strong> 1.0<br />
+<strong>Date:</strong> 21 November 2025
+<strong>Prepared For:</strong> QA Testing Team  </p>
+<hr />
+<h2 id="test-case-template-legend">Test Case Template Legend</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TC ID</strong></td>
+<td>Unique Test Case Identifier</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>Feature/Module being tested</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>P1 (Critical), P2 (High), P3 (Medium)</td>
+</tr>
+<tr>
+<td><strong>Type</strong></td>
+<td>Functional, UI/UX, Security</td>
+</tr>
+<tr>
+<td><strong>Preconditions</strong></td>
+<td>Required state before test execution</td>
+</tr>
+<tr>
+<td><strong>Test Steps</strong></td>
+<td>Detailed step-by-step instructions</td>
+</tr>
+<tr>
+<td><strong>Expected Result</strong></td>
+<td>What should happen</td>
+</tr>
+<tr>
+<td><strong>Actual Result</strong></td>
+<td>To be filled by tester</td>
+</tr>
+<tr>
+<td><strong>Status</strong></td>
+<td>Pass / Fail / Blocked / Not Executed</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="module-1-user-registration">Module 1: User Registration</h2>
+<h3 id="tc-001-successful-user-registration">TC-001: Successful User Registration</h3>
+<ul>
+<li><strong>Module:</strong> User Registration</li>
+<li><strong>Priority:</strong> P1</li>
+<li><strong>Type:</strong> Functional</li>
+<li><strong>Preconditions:</strong> </li>
+<li>Application is accessible</li>
+<li>User is not logged in</li>
+<li>Valid email address not already registered</li>
+<li><strong>Test Steps:</strong></li>
+<li>Navigate to the registration page</li>
+<li>Enter a valid email address (e.g., "test@gmail.com")</li>
+<li>Enter a valid password </li>
+<li>Click on "Login\Sign Up" button</li>
+<li><strong>Expected Result:</strong> </li>
+<li>User account is created successfully</li>
+<li>Success message is displayed</li>
+<li>User is redirected to login page</li>
+<li>User data is stored in MongoDB with hashed password</li>
+<li><strong>Actual Result:</strong> redirected to login page</li>
+<li><strong>Status:</strong> Pass </li>
+</ul>
+<hr />
+<h3 id="tc-002-registration-with-duplicate-email">TC-002: Registration with Duplicate Email</h3>
+<ul>
+<li><strong>Module:</strong> User Registration</li>
+<li><strong>Priority:</strong> P1</li>
+<li><strong>Type:</strong> Functional</li>
+<li><strong>Preconditions:</strong> </li>
+<li>Application is accessible</li>
+<li>A user account with email "test@example.com" already exists</li>
+<li><strong>Test Steps:</strong></li>
+<li>Navigate to the registration page</li>
+<li>Enter a valid name</li>
+<li>Enter email "test@gmail.com" (email already exist)</li>
+<li>Enter a valid password</li>
+<li>Click on "Sign in" button</li>
+<li><strong>Expected Result:</strong> </li>
+<li>Error message displayed: "Email already exists" </li>
+<li>User account is not created</li>
+<li>User remains on registration page</li>
+<li><strong>Actual Result:</strong> Email already exists</li>
+<li><strong>Status:</strong> Pass </li>
+</ul>
+<hr />
+<h3 id="tc-003-registration-with-missing-required-fields">TC-003: Registration with Missing Required Fields</h3>
+<ul>
+<li><strong>Module:</strong> User Registration</li>
+<li><strong>Priority:</strong> P2</li>
+<li><strong>Type:</strong> Functional</li>
+<li><strong>Preconditions:</strong> </li>
+<li>Application is accessible</li>
+<li>User is on registration page</li>
+<li><strong>Test Steps:</strong></li>
+<li>Leave email field empty</li>
+<li>Leave password field empty</li>
+<li>Click on "login/Signin" button</li>
+<li><strong>Expected Result:</strong> </li>
+<li>Validation error messages displayed for each empty field</li>
+<li>Registration form does not submit</li>
+<li>User remains on registration page</li>
+<li><strong>Actual Result:</strong> fill out this field</li>
+<li><strong>Status:</strong>  Pass </li>
+</ul>
+<hr />
+<h2 id="module-2-user-login">Module 2: User Login</h2>
+<h3 id="tc-004-successful-user-login">TC-004: Successful User Login</h3>
+<ul>
+<li><strong>Module:</strong> User Login</li>
+<li><strong>Priority:</strong> P1</li>
+<li><strong>Type:</strong> Functional</li>
+<li><strong>Preconditions:</strong> </li>
+<li>Application is accessible</li>
+<li>A valid user account exists (email: "test@gmail.com", password: "12345")</li>
+<li>User is not logged in</li>
+<li><strong>Test Steps:</strong></li>
+<li>Navigate to the login page</li>
+<li>Enter valid email address</li>
+<li>Enter valid password</li>
+<li>Click on "Login" button</li>
+<li><strong>Expected Result:</strong> </li>
+<li>User is authenticated successfully</li>
+<li>JWT token is generated and stored</li>
+<li>User is redirected to dashboard/homepage</li>
+<li>User session is established</li>
+<li><strong>Actual Result:</strong> Same as expected</li>
+<li><strong>Status:</strong> pass</li>
+</ul>
+<hr />
+<h3 id="tc-005-login-with-incorrect-credentials">TC-005: Login with Incorrect Credentials</h3>
+<ul>
+<li><strong>Module:</strong> User Login</li>
+<li><strong>Priority:</strong> P1</li>
+<li><strong>Type:</strong> Functional</li>
+<li><strong>Preconditions:</strong> </li>
+<li>Application is accessible</li>
+<li>A valid user account exists</li>
+<li>User is not logged in</li>
+<li><strong>Test Steps:</strong></li>
+<li>Navigate to the login page</li>
+<li>Enter valid email address</li>
+<li>Enter incorrect password</li>
+<li>Click on "Login" button</li>
+<li><strong>Expected Result:</strong> </li>
+<li>Error message displayed: "Invalid credentials" or "Wrong password"</li>
+<li>User is not authenticated</li>
+<li>JWT token is not generated</li>
+<li>User remains on login page</li>
+<li><strong>Actual Result:</strong> Error message displayed: "Invalid credentials"</li>
+<li><strong>Status:</strong> pass</li>
+</ul>
+<hr />
+<h2 id="module-3-authentication-authorization">Module 3: Authentication &amp; Authorization</h2>
+<h3 id="tc-006-access-protected-route-without-authentication">TC-006: Access Protected Route Without Authentication</h3>
+<ul>
+<li><strong>Module:</strong> Authentication &amp; Authorization</li>
+<li><strong>Priority:</strong> P1</li>
+<li><strong>Type:</strong> Security</li>
+<li><strong>Preconditions:</strong> </li>
+<li>Application is accessible</li>
+<li>User is not logged in</li>
+<li>No JWT token in browser storage</li>
+<li><strong>Test Steps:</strong></li>
+<li>Try to access a protected route (e.g., create recipe page) directly via URL</li>
+<li>Observe the application behavior</li>
+<li><strong>Expected Result:</strong> </li>
+<li>User is redirected to login page</li>
+<li>Error message: "Unauthorized" or "Please login to continue"</li>
+<li>Protected content is not accessible</li>
+<li><strong>Actual Result:</strong> Got a login/sigup pop up</li>
+<li><strong>Status:</strong> pass</li>
+</ul>
+<hr />
+<h3 id="tc-007-access-protected-route-with-valid-jwt-token">TC-007: Access Protected Route with Valid JWT Token</h3>
+<ul>
+<li><strong>Module:</strong> Authentication &amp; Authorization</li>
+<li><strong>Priority:</strong> P1</li>
+<li><strong>Type:</strong> Security</li>
+<li><strong>Preconditions:</strong> </li>
+<li>User is logged in successfully</li>
+<li>Valid JWT token exists in browser storage</li>
+<li><strong>Test Steps:</strong></li>
+<li>Navigate to a protected route (e.g., create recipe page)</li>
+<li>Observe the application behavior</li>
+<li><strong>Expected Result:</strong> </li>
+<li>Protected route is accessible</li>
+<li>User can view and interact with protected content</li>
+<li>No redirect to login page</li>
+<li><strong>Actual Result:</strong> Protected route accessed successfully, user can create recipes</li>
+<li><strong>Status:</strong> pass</li>
+</ul>
+<hr />
+<h2 id="module-4-recipe-crud-operations">Module 4: Recipe CRUD Operations</h2>
+<h3 id="tc-008-create-recipe-with-all-required-fields">TC-008: Create Recipe with All Required Fields</h3>
+<ul>
+<li><strong>Module:</strong> Recipe Management</li>
+<li><strong>Priority:</strong> P1</li>
+<li><strong>Type:</strong> Functional</li>
+<li><strong>Preconditions:</strong> </li>
+<li>User is logged in successfully</li>
+<li>User is on the create recipe page</li>
+<li><strong>Test Steps:</strong></li>
+<li>Enter recipe title (e.g., "Chocolate Cake")</li>
+<li>Enter ingredients (e.g., "Flour, Sugar, Cocoa Powder")</li>
+<li>Enter cooking instructions (e.g., "Mix all ingredients...")</li>
+<li>Enter cooking time (e.g., "45 minutes")</li>
+<li>Upload a recipe image (valid image file)</li>
+<li>Click on "Create Recipe" or "Save" button</li>
+<li><strong>Expected Result:</strong> </li>
+<li>Recipe is created successfully</li>
+<li>Success message is displayed</li>
+<li>Recipe appears in the recipe list</li>
+<li>Image is uploaded to S3 bucket</li>
+<li>Recipe data is stored in MongoDB with createdById field</li>
+<li><strong>Actual Result:</strong> Recipe created successfully, success message displayed, recipe appears in list with image</li>
+<li><strong>Status:</strong> pass</li>
+</ul>
+<hr />
+<h3 id="tc-009-create-recipe-with-missing-required-fields">TC-009: Create Recipe with Missing Required Fields</h3>
+<ul>
+<li><strong>Module:</strong> Recipe Management</li>
+<li><strong>Priority:</strong> P2</li>
+<li><strong>Type:</strong> Functional</li>
+<li><strong>Preconditions:</strong> </li>
+<li>User is logged in successfully</li>
+<li>User is on the create recipe page</li>
+<li><strong>Test Steps:</strong></li>
+<li>Leave title field empty</li>
+<li>Enter other required fields</li>
+<li>Click on "Create Recipe" button</li>
+<li><strong>Expected Result:</strong> </li>
+<li>Validation error message displayed for missing title</li>
+<li>Recipe is not created</li>
+<li>User remains on create recipe page</li>
+<li><strong>Actual Result:</strong> Validation error "Title is required" displayed, recipe not created</li>
+<li><strong>Status:</strong> pass</li>
+</ul>
+<hr />
+<h3 id="tc-010-view-all-recipes-guest-user">TC-010: View All Recipes (Guest User)</h3>
+<ul>
+<li><strong>Module:</strong> Recipe Management</li>
+<li><strong>Priority:</strong> P1</li>
+<li><strong>Type:</strong> Functional</li>
+<li><strong>Preconditions:</strong> </li>
+<li>Application is accessible</li>
+<li>At least one recipe exists in the database</li>
+<li>User is not logged in (Guest user)</li>
+<li><strong>Test Steps:</strong></li>
+<li>Navigate to the recipes listing page</li>
+<li>Observe the displayed recipes</li>
+<li><strong>Expected Result:</strong> </li>
+<li>All available recipes are displayed</li>
+<li>Each recipe shows: title, image, author name</li>
+<li>Recipes are displayed in a list or grid format</li>
+<li>Guest user can view recipes but cannot edit/delete</li>
+<li><strong>Actual Result:</strong> All recipes displayed with title, image, and author. Edit/delete buttons not visible for guest user</li>
+<li><strong>Status:</strong> pass</li>
+</ul>
+<hr />
+<h3 id="tc-011-view-recipe-details">TC-011: View Recipe Details</h3>
+<ul>
+<li><strong>Module:</strong> Recipe Management</li>
+<li><strong>Priority:</strong> P1</li>
+<li><strong>Type:</strong> Functional</li>
+<li><strong>Preconditions:</strong> </li>
+<li>Application is accessible</li>
+<li>At least one recipe exists in the database</li>
+<li><strong>Test Steps:</strong></li>
+<li>Navigate to the recipes listing page</li>
+<li>Click on a recipe card or "View Details" button</li>
+<li><strong>Expected Result:</strong> </li>
+<li>Recipe details page is displayed</li>
+<li>Full recipe information is shown: title, image, ingredients, instructions, cooking time, author</li>
+<li>Recipe details are accurate and complete</li>
+<li><strong>Actual Result:</strong> Recipe details page displayed with all information: title, image, ingredients, instructions, time, and author</li>
+<li><strong>Status:</strong> pass</li>
+</ul>
+<hr />
+<h3 id="tc-012-edit-own-recipe-authorized-user">TC-012: Edit Own Recipe (Authorized User)</h3>
+<ul>
+<li><strong>Module:</strong> Recipe Management</li>
+<li><strong>Priority:</strong> P1</li>
+<li><strong>Type:</strong> Functional</li>
+<li><strong>Preconditions:</strong> </li>
+<li>User is logged in successfully</li>
+<li>User has created at least one recipe</li>
+<li>User is viewing their own recipe</li>
+<li><strong>Test Steps:</strong></li>
+<li>Navigate to a recipe created by the logged-in user</li>
+<li>Click on "Edit" button</li>
+<li>Modify recipe title (e.g., change "Chocolate Cake" to "Chocolate Cake Deluxe")</li>
+<li>Update ingredients or instructions</li>
+<li>Click on "Save" or "Update" button</li>
+<li><strong>Expected Result:</strong> </li>
+<li>Recipe is updated successfully</li>
+<li>Success message is displayed</li>
+<li>Updated recipe information is reflected in the recipe list and details page</li>
+<li>Changes are saved in MongoDB</li>
+<li><strong>Actual Result:</strong> Recipe updated successfully, success message shown, changes reflected in recipe list and details page</li>
+<li><strong>Status:</strong> pass</li>
+</ul>
+<hr />
+<h3 id="tc-013-edit-recipe-as-non-owner-unauthorized-user">TC-013: Edit Recipe as Non-Owner (Unauthorized User)</h3>
+<ul>
+<li><strong>Module:</strong> Recipe Management</li>
+<li><strong>Priority:</strong> P1</li>
+<li><strong>Type:</strong> Security</li>
+<li><strong>Preconditions:</strong> </li>
+<li>User A is logged in successfully</li>
+<li>User B has created a recipe</li>
+<li>User A is viewing User B's recipe</li>
+<li><strong>Test Steps:</strong></li>
+<li>Navigate to a recipe created by another user</li>
+<li>Try to access edit functionality (via URL or button)</li>
+<li>Observe the application behavior</li>
+<li><strong>Expected Result:</strong> </li>
+<li>Edit button is not visible OR</li>
+<li>Error message: "403 Forbidden" or "You are not authorized to edit this recipe"</li>
+<li>Recipe is not editable</li>
+<li>User cannot modify the recipe</li>
+<li><strong>Actual Result:</strong> Edit button not visible for non-owner recipes, access denied when trying to edit via URL</li>
+<li><strong>Status:</strong> pass</li>
+</ul>
+<hr />
+<h3 id="tc-014-delete-own-recipe-authorized-user">TC-014: Delete Own Recipe (Authorized User)</h3>
+<ul>
+<li><strong>Module:</strong> Recipe Management</li>
+<li><strong>Priority:</strong> P1</li>
+<li><strong>Type:</strong> Functional</li>
+<li><strong>Preconditions:</strong> </li>
+<li>User is logged in successfully</li>
+<li>User has created at least one recipe</li>
+<li>User is viewing their own recipe</li>
+<li><strong>Test Steps:</strong></li>
+<li>Navigate to a recipe created by the logged-in user</li>
+<li>Click on "Delete" button</li>
+<li>Confirm deletion in the confirmation dialog</li>
+<li><strong>Expected Result:</strong> </li>
+<li>Confirmation dialog is displayed</li>
+<li>Recipe is deleted successfully after confirmation</li>
+<li>Success message is displayed</li>
+<li>Recipe is removed from the recipe list</li>
+<li>Recipe is soft-deleted in MongoDB (deletedAt field set)</li>
+<li><strong>Actual Result:</strong> Confirmation dialog displayed, recipe deleted after confirmation, success message shown, recipe removed from list</li>
+<li><strong>Status:</strong> pass</li>
+</ul>
+<hr />
+<h3 id="tc-015-delete-recipe-as-non-owner-unauthorized-user">TC-015: Delete Recipe as Non-Owner (Unauthorized User)</h3>
+<ul>
+<li><strong>Module:</strong> Recipe Management</li>
+<li><strong>Priority:</strong> P1</li>
+<li><strong>Type:</strong> Security</li>
+<li><strong>Preconditions:</strong> </li>
+<li>User A is logged in successfully</li>
+<li>User B has created a recipe</li>
+<li>User A is viewing User B's recipe</li>
+<li><strong>Test Steps:</strong></li>
+<li>Navigate to a recipe created by another user</li>
+<li>Try to access delete functionality (via URL or button)</li>
+<li>Observe the application behavior</li>
+<li><strong>Expected Result:</strong> </li>
+<li>Delete button is not visible OR</li>
+<li>Error message: "403 Forbidden" or "You are not authorized to delete this recipe"</li>
+<li>Recipe is not deletable</li>
+<li>User cannot delete the recipe</li>
+<li><strong>Actual Result:</strong> Delete button not visible for non-owner recipes, access denied when trying to delete via URL</li>
+<li><strong>Status:</strong> pass</li>
+</ul>
+<hr />
+<h2 id="module-5-favorite-recipes">Module 5: Favorite Recipes</h2>
+<h3 id="tc-016-add-recipe-to-favorites">TC-016: Add Recipe to Favorites</h3>
+<ul>
+<li><strong>Module:</strong> Favorite Recipes</li>
+<li><strong>Priority:</strong> P2</li>
+<li><strong>Type:</strong> Functional</li>
+<li><strong>Preconditions:</strong> </li>
+<li>User is logged in successfully</li>
+<li>At least one recipe exists in the database</li>
+<li>User is viewing a recipe</li>
+<li><strong>Test Steps:</strong></li>
+<li>Navigate to a recipe details page</li>
+<li>Click on "Add to Favorites" or heart icon</li>
+<li>Navigate to the Favorites page</li>
+<li><strong>Expected Result:</strong> </li>
+<li>Recipe is marked as favorite</li>
+<li>Favorite icon changes state (e.g., filled heart)</li>
+<li>Recipe appears in the Favorites list</li>
+<li>Favorite status is stored in browser localStorage</li>
+<li><strong>Actual Result:</strong> Recipe marked as favorite, heart icon filled, recipe appears in Favorites list</li>
+<li><strong>Status:</strong> pass</li>
+</ul>
+<hr />
+<h3 id="tc-017-remove-recipe-from-favorites">TC-017: Remove Recipe from Favorites</h3>
+<ul>
+<li><strong>Module:</strong> Favorite Recipes</li>
+<li><strong>Priority:</strong> P2</li>
+<li><strong>Type:</strong> Functional</li>
+<li><strong>Preconditions:</strong> </li>
+<li>User is logged in successfully</li>
+<li>User has at least one recipe marked as favorite</li>
+<li>User is viewing a favorited recipe</li>
+<li><strong>Test Steps:</strong></li>
+<li>Navigate to a recipe that is already in favorites</li>
+<li>Click on "Remove from Favorites" or heart icon</li>
+<li>Navigate to the Favorites page</li>
+<li><strong>Expected Result:</strong> </li>
+<li>Recipe is removed from favorites</li>
+<li>Favorite icon changes state (e.g., empty heart)</li>
+<li>Recipe no longer appears in the Favorites list</li>
+<li>Favorite status is updated in browser localStorage</li>
+<li><strong>Actual Result:</strong> Recipe removed from favorites, heart icon empty, recipe no longer in Favorites list</li>
+<li><strong>Status:</strong> pass</li>
+</ul>
+<hr />
+<h3 id="tc-018-view-favorites-page">TC-018: View Favorites Page</h3>
+<ul>
+<li><strong>Module:</strong> Favorite Recipes</li>
+<li><strong>Priority:</strong> P2</li>
+<li><strong>Type:</strong> Functional</li>
+<li><strong>Preconditions:</strong> </li>
+<li>User is logged in successfully</li>
+<li>User has at least one recipe marked as favorite</li>
+<li><strong>Test Steps:</strong></li>
+<li>Navigate to the Favorites page</li>
+<li>Observe the displayed recipes</li>
+<li><strong>Expected Result:</strong> </li>
+<li>Only favorited recipes are displayed</li>
+<li>Favorites list shows: title, image, ingredients, time</li>
+<li>All favorited recipes are visible</li>
+<li>Non-favorited recipes are not shown</li>
+<li><strong>Actual Result:</strong> Only favorited recipes displayed with title, image, ingredients, and time. Non-favorited recipes not shown</li>
+<li><strong>Status:</strong> pass</li>
+</ul>
+<hr />
+<h2 id="module-6-search-functionality">Module 6: Search Functionality</h2>
+<h3 id="tc-019-search-recipe-by-title-exact-match">TC-019: Search Recipe by Title (Exact Match)</h3>
+<ul>
+<li><strong>Module:</strong> Search</li>
+<li><strong>Priority:</strong> P1</li>
+<li><strong>Type:</strong> Functional</li>
+<li><strong>Preconditions:</strong> </li>
+<li>Application is accessible</li>
+<li>At least one recipe exists with title "Chocolate Cake"</li>
+<li><strong>Test Steps:</strong></li>
+<li>Navigate to the search page or use search bar</li>
+<li>Enter search keyword: "Chocolate Cake"</li>
+<li>Click on "Search" button or press Enter</li>
+<li><strong>Expected Result:</strong> </li>
+<li>Search results page displays recipes matching "Chocolate Cake"</li>
+<li>Matching recipe(s) are shown with: title, image, ingredients, time</li>
+<li>Exact match recipe appears in results</li>
+<li><strong>Actual Result:</strong> Search results displayed with matching "Chocolate Cake" recipe showing title, image, ingredients, and time</li>
+<li><strong>Status:</strong> pass</li>
+</ul>
+<hr />
+<h3 id="tc-020-search-recipe-by-partial-title">TC-020: Search Recipe by Partial Title</h3>
+<ul>
+<li><strong>Module:</strong> Search</li>
+<li><strong>Priority:</strong> P2</li>
+<li><strong>Type:</strong> Functional</li>
+<li><strong>Preconditions:</strong> </li>
+<li>Application is accessible</li>
+<li>At least one recipe exists with title containing "Chocolate"</li>
+<li><strong>Test Steps:</strong></li>
+<li>Navigate to the search page or use search bar</li>
+<li>Enter search keyword: "Choco"</li>
+<li>Click on "Search" button or press Enter</li>
+<li><strong>Expected Result:</strong> </li>
+<li>Search results page displays all recipes containing "Chocolate" in the title</li>
+<li>Matching recipes are shown with: title, image, ingredients, time</li>
+<li>Partial matches are included in results</li>
+<li><strong>Actual Result:</strong> Search results displayed with all recipes containing "Chocolate" in title, showing title, image, ingredients, and time</li>
+<li><strong>Status:</strong> pass</li>
+</ul>
+<hr />
+<h3 id="tc-021-search-with-no-matching-results">TC-021: Search with No Matching Results</h3>
+<ul>
+<li><strong>Module:</strong> Search</li>
+<li><strong>Priority:</strong> P2</li>
+<li><strong>Type:</strong> Functional</li>
+<li><strong>Preconditions:</strong> </li>
+<li>Application is accessible</li>
+<li>No recipe exists with title "NonExistentRecipe123"</li>
+<li><strong>Test Steps:</strong></li>
+<li>Navigate to the search page or use search bar</li>
+<li>Enter search keyword: "NonExistentRecipe123"</li>
+<li>Click on "Search" button or press Enter</li>
+<li><strong>Expected Result:</strong> </li>
+<li>Message displayed: "No recipes found" or "No matching results"</li>
+<li>Empty state is shown</li>
+<li>User-friendly message is displayed</li>
+<li><strong>Actual Result:</strong> Empty state is shown</li>
+<li><strong>Status:</strong> pass</li>
+</ul>
+<hr />
+<h2 id="module-7-progressive-web-app-pwa">Module 7: Progressive Web App (PWA)</h2>
+<h3 id="tc-022-pwa-offline-access-view-cached-pages">TC-022: PWA Offline Access - View Cached Pages</h3>
+<ul>
+<li><strong>Module:</strong> PWA</li>
+<li><strong>Priority:</strong> P2</li>
+<li><strong>Type:</strong> Functional</li>
+<li><strong>Preconditions:</strong> </li>
+<li>Application is installed as PWA</li>
+<li>User has visited homepage and recipe listing page while online</li>
+<li>Service worker has cached assets</li>
+<li><strong>Test Steps:</strong></li>
+<li>Disable internet connection (airplane mode or disconnect WiFi)</li>
+<li>Open the PWA application</li>
+<li>Navigate to previously visited pages (homepage, recipe list)</li>
+<li><strong>Expected Result:</strong> </li>
+<li>Cached pages are accessible offline</li>
+<li>Previously loaded recipes are displayed from cache</li>
+<li>Application works without internet connection</li>
+<li>Offline indicator may be shown</li>
+<li><strong>Actual Result:</strong> Cached pages accessible offline, previously loaded recipes displayed from cache, offline indicator shown</li>
+<li><strong>Status:</strong> pass</li>
+</ul>
+<hr />
+<h2 id="module-8-uiux-testing">Module 8: UI/UX Testing</h2>
+<h3 id="tc-023-responsive-design-mobile-view">TC-023: Responsive Design - Mobile View</h3>
+<ul>
+<li><strong>Module:</strong> UI/UX</li>
+<li><strong>Priority:</strong> P2</li>
+<li><strong>Type:</strong> UI/UX</li>
+<li><strong>Preconditions:</strong> </li>
+<li>Application is accessible</li>
+<li>Browser developer tools available</li>
+<li><strong>Test Steps:</strong></li>
+<li>Open application in browser</li>
+<li>Open developer tools (F12)</li>
+<li>Switch to mobile view (responsive design mode)</li>
+<li>Select a mobile device (e.g., iPhone 12, Samsung Galaxy)</li>
+<li>Navigate through different pages (home, recipes, create recipe)</li>
+<li><strong>Expected Result:</strong> </li>
+<li>Application layout adapts to mobile screen size</li>
+<li>All elements are visible and accessible</li>
+<li>Navigation menu works properly (hamburger menu if applicable)</li>
+<li>Text is readable without zooming</li>
+<li>Buttons and links are easily tappable</li>
+<li><strong>Actual Result:</strong> Layout adapts perfectly till specific resolution but on mobiles doesn't that much</li>
+<li><strong>Status:</strong> Fail</li>
+</ul>
+<hr />
+<h3 id="tc-024-image-upload-valid-image-format">TC-024: Image Upload - Valid Image Format</h3>
+<ul>
+<li><strong>Module:</strong> Recipe Management</li>
+<li><strong>Priority:</strong> P2</li>
+<li><strong>Type:</strong> Functional</li>
+<li><strong>Preconditions:</strong> </li>
+<li>User is logged in successfully</li>
+<li>User is on the create recipe page</li>
+<li><strong>Test Steps:</strong></li>
+<li>Click on "Choose File" or image upload button</li>
+<li>Select a valid image file (JPG, PNG, or other supported format)</li>
+<li>Observe image preview (if available)</li>
+<li>Complete recipe creation</li>
+<li><strong>Expected Result:</strong> </li>
+<li>Image file is selected successfully</li>
+<li>Image preview is displayed (if feature exists)</li>
+<li>Image uploads successfully to S3 bucket</li>
+<li>Image is displayed in recipe details</li>
+<li><strong>Actual Result:</strong> Image file selected successfully, preview displayed, image uploaded to S3, image displayed in recipe details</li>
+<li><strong>Status:</strong> pass</li>
+</ul>
+<hr />
+<h2 id="module-9-security-testing">Module 9: Security Testing</h2>
+<h3 id="tc-025-password-security-password-hashing">TC-025: Password Security - Password Hashing</h3>
+<ul>
+<li><strong>Module:</strong> Security</li>
+<li><strong>Priority:</strong> P1</li>
+<li><strong>Type:</strong> Security</li>
+<li><strong>Preconditions:</strong> </li>
+<li>Database access available (for verification)</li>
+<li>User registration functionality works</li>
+<li><strong>Test Steps:</strong></li>
+<li>Register a new user with password "12345"</li>
+<li>Check the database to view stored password</li>
+<li><strong>Expected Result:</strong> </li>
+<li>Password is stored as hashed value (bcrypt hash)</li>
+<li>Plain text password is not visible in database</li>
+<li>Password hash starts with "$2b$" or similar bcrypt identifier</li>
+<li><strong>Actual Result:</strong> Password stored as bcrypt hash starting with "$2b$", plain text password not visible in database</li>
+<li><strong>Status:</strong> pass</li>
+</ul>
+<hr />
+<h2 id="test-execution-summary">Test Execution Summary</h2>
+<h3 id="test-execution-log">Test Execution Log</h3>
+<table>
+<thead>
+<tr>
+<th>TC ID</th>
+<th>Module</th>
+<th>Priority</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TC-001</td>
+<td>User Registration</td>
+<td>P1</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-002</td>
+<td>User Registration</td>
+<td>P1</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-003</td>
+<td>User Registration</td>
+<td>P2</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-004</td>
+<td>User Login</td>
+<td>P1</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-005</td>
+<td>User Login</td>
+<td>P1</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-006</td>
+<td>Authentication</td>
+<td>P1</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-007</td>
+<td>Authentication</td>
+<td>P1</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-008</td>
+<td>Recipe CRUD</td>
+<td>P1</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-009</td>
+<td>Recipe CRUD</td>
+<td>P2</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-010</td>
+<td>Recipe CRUD</td>
+<td>P1</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-011</td>
+<td>Recipe CRUD</td>
+<td>P1</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-012</td>
+<td>Recipe CRUD</td>
+<td>P1</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-013</td>
+<td>Recipe CRUD</td>
+<td>P1</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-014</td>
+<td>Recipe CRUD</td>
+<td>P1</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-015</td>
+<td>Recipe CRUD</td>
+<td>P1</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-016</td>
+<td>Favorites</td>
+<td>P2</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-017</td>
+<td>Favorites</td>
+<td>P2</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-018</td>
+<td>Favorites</td>
+<td>P2</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-019</td>
+<td>Search</td>
+<td>P1</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-020</td>
+<td>Search</td>
+<td>P2</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-021</td>
+<td>Search</td>
+<td>P2</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-022</td>
+<td>PWA</td>
+<td>P2</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-023</td>
+<td>UI/UX</td>
+<td>P2</td>
+<td>Fail</td>
+</tr>
+<tr>
+<td>TC-024</td>
+<td>Recipe Management</td>
+<td>P2</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-025</td>
+<td>Security</td>
+<td>P1</td>
+<td>Pass</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="test-environment-details">Test Environment Details</h2>
+<ul>
+<li><strong>Application URL:</strong> https://food-recipe-webapp-frontend.vercel.app</li>
+<li><strong>Browser:</strong> Chrome / Safari </li>
+<li><strong>Operating System:</strong> macOS / Mobile</li>
+<li><strong>Device:</strong> Desktop / Mobile</li>
+<li><strong>Network:</strong> WiFi / Mobile Data / Offline</li>
+</ul>
+<hr />
+<p><strong>End of Test Case Document</strong></p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
