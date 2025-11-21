@@ -5,14 +5,14 @@ This section explains the overall system setup and internal data movement in the
 ---
 
 ### Explanation
-- **Route 53**: Provides the custom domain and DNS routing for the application.  
+- **Hostinger**: Provides the custom domain and DNS routing for the application.  
 - **EC2 Instance**: Hosts the Node.js + Express backend service that manages API requests and business logic.  
 - **S3 Bucket**:  
   - Serves static frontend files built from React + Vite.  
   - Stores uploaded recipe images and other media assets.  
 - **MongoDB Atlas**: Cloud-hosted NoSQL database used to persist user accounts, recipes, and favorites.  
 - **Security**:  
-  - All API calls are served over HTTPS through Route 53-managed SSL.  
+  - All API calls are served over HTTPS.  
   - JWT tokens secure authentication across sessions.
 
 This setup ensures high availability, scalability, and separation of concerns between static hosting, compute, and storage.
@@ -130,26 +130,6 @@ The routes are grouped by functional modules: **Auth/User**, **Recipes**, **Stat
 
 ---
 
-### Static Assets
-
-| **Method** | **Path** | **Auth** | **Request (body / params / query)** | **Notes** |
-|:-----------:|:---------:|:--------:|:------------------------------------:|:-----------:|
-| **GET** | `/images/:filename` | No | Path param: filename | Serves static images from `backend/public/images/`. Use in frontend as `http://<host>/images/<coverImage>`. |
-
----
-
-### Favorites (Server-Side Persistence)
-
-| **Method** | **Path** | **Auth** | **Request (body / params / query)** | **Notes** |
-|:-----------:|:---------:|:--------:|:------------------------------------:|:-----------:|
-| **POST** | `/favorites` | Yes | JSON `{ "recipeId": "<id>" }` | Creates a favorite document . |
-| **DELETE** | `/favorites/:recipeId` | Yes | Path param: recipeId | Removes favorite for the current user. |
-| **GET** | `/favorites/me` | Yes | — | Returns `[ favorite doc (populated with recipe) ]`. |
-| **POST** | `/favorites/migrate` | Yes | JSON `{ "recipeIds" }` | Migrates localStorage favorites to DB on login. |
-
-
----
-
 ## Testing Frameworks
 
 The project follows a minimal and efficient testing approach focusing on verifying key logic and API endpoints.  
@@ -159,7 +139,7 @@ This setup uses **Jest** for automated testing and **Postman** for manual API va
 | **Testing Area** | **Framework / Tool** | **Purpose** | **Type of Testing** | **Execution Mode** |
 |:--|:--|:--|:--|:--|
 | **Backend & Frontend Logic** | **Jest** | Validate backend controllers, database operations, and utility functions. | Unit / Integration | Automated |
-| **API Endpoints** | **Postman** | Verify API routes such as `/login`, `/signUp`, `/recipe`, and `/favorite`. | Functional / Manual | Manual runs using Postman GUI |
+| **API Endpoints** | **Postman** | Verify API routes such as `/login`, `/signUp`, `/recipes`, and `/users`. | Functional / Manual | Manual runs using Postman GUI |
 
 ---
 
@@ -182,7 +162,7 @@ The table below lists all major technologies and their specific roles.
 | **Database** | **MongoDB Atlas** | Store user data, recipes, and favorites in the cloud. | Database |
 | **Cloud & Deployment** | **AWS EC2** | Host backend server and APIs. | Cloud Compute |
 |  | **AWS S3** | Store uploaded images securely and serve them globally. | Cloud Storage |
-|  | **AWS Route 53** | Manage custom domain and DNS routing. | Cloud DNS |
+|  | **Hostinger** | Manage custom domain and DNS routing. | Cloud DNS |
 |  | **GitHub Pages** | Deploy documentation and static assets. | Hosting |
 | **Testing & Validation** | **Jest** | Unit and integration testing for logic validation. | Testing |
 |  | **Postman** | Manual API testing and verification. | Testing |

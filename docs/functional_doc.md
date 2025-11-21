@@ -38,7 +38,7 @@ flowchart LR
     A -->|Creates, Updates, Deletes Recipes| B
     A -->|Marks Favorite Recipes or Customizes| B
     A -->|Searches Recipes| B
-    B -->|Handles Authentication using JWT and Image Uploads via Multer| C[(MongoDB Database)]
+    B -->|Handles Authentication using JWT and Image Uploads via S3| C[(MongoDB Database)]
     B -->|Serves API Responses and Business Logic| D[React Frontend and PWA]
     D -->|Displays Recipes, Favorites, and Personalized Data| A
 
@@ -125,11 +125,11 @@ The System Requirements section outlines the functional and non-functional behav
 ---
 
 ### FR-08: Favorite Recipes
-- **Description:** Users can mark/unmark favorite recipes.  
-- **Inputs:** Recipe ID, User ID  
-- **Process:** Toggle favorite status in DB.  
-- **Output:** Favorites list updated.  
-- **Errors:** Database write error.
+- **Description:** Users can mark/unmark recipes as favorites (stored in browser localStorage only).
+- **Inputs:** Recipe ID
+- **Process:** Toggle favorite state in localStorage.
+- **Output:** Updated favorite list in UI.
+- **Errors:** LocalStorage write error.
 
 ---
 

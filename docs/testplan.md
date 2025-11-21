@@ -85,16 +85,10 @@ All backend endpoints will be validated for status codes, response bodies, error
 | PUT `/recipes/:id` | Update recipe | 200 OK |
 | DELETE `/recipes/:id` | Delete recipe | 200 OK |
 
-##### Favorites API
-| **API** | **Description** | **Expected Result** |
-|---------|------------------|----------------------|
-| POST `/favorites/:id` | Add recipe to favorites | 200 OK |
-| DELETE `/favorites/:id` | Remove favorite | 200 OK |
-
 ##### Search API
 | **API** | **Expected Result** |
 |---------|----------------------|
-| GET `/recipes?search=keyword` | 200 OK + filtered results |
+| GET `/search/:query` | 200 OK + filtered results |
 
 ---
 

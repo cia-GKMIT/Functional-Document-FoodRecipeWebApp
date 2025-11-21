@@ -12,7 +12,6 @@ The Food Recipe Web App database consists of three main collections:
 
 | Collection | Description |
 |-------------|--------------|
-| **Favourites** | Authorised user can customise their recipes what they like |
 | **Users** | Regular users who create, update, and manage recipes |
 | **Recipes** | Stores recipe details and links to their creators |
 <!-- 
@@ -54,15 +53,6 @@ Each collection is connected through **ObjectId references**, creating logical r
 erDiagram
  
 
-    FAVORITES {
-        ObjectId _id PK 
-        ObjectId userId FK "ref: USERS._id"
-        ObjectId recipeId FK "ref: RECIPES._id"
-        Date createdAt
-        Date updatedAt
-        Date deletedAt
-    }
-
     USERS {
         ObjectId _id PK 
         String email "required,unique"
@@ -77,8 +67,8 @@ erDiagram
         String title "required"
         Array ingredients "required"
         String instructions "required"
-        String time
-        String coverImage
+        String time "required"
+        String coverImage "required"
         ObjectId createdById FK "ref: USERS._id"
         Date createdAt
         Date updatedAt
@@ -86,17 +76,6 @@ erDiagram
     }
 
     RECIPES }o--|| USERS : "createdBy"
-    FAVORITES }o--|| USERS : "user"
-    FAVORITES }o--|| RECIPES : "recipe"
 
-
-```
-
-###  Compound Index (Title + CreatedBy)
-
-To prevent duplicate recipe titles for the same user, a **compound unique index** is added:
-
-```js
-recipeSchema.index({ title: 1, createdBy: 1 }, { unique: true });
 
 ```
