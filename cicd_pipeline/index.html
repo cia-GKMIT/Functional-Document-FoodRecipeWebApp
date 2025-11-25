@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Business Use Case - Food Recipe Web App</title>
+        <title>CI/CD Pipeline & Deployment Flow - Food Recipe Web App</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/fontawesome.min.css" rel="stylesheet">
         <link href="../css/brands.min.css" rel="stylesheet">
@@ -42,7 +42,7 @@
                                 <a href="../functional_doc/" class="nav-link">Functional Document</a>
                             </li>
                             <li class="nav-item">
-                                <a href="./" class="nav-link active" aria-current="page">Business Use Case</a>
+                                <a href="../business_use_case/" class="nav-link">Business Use Case</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../database_schema/" class="nav-link">Database Schema</a>
@@ -57,18 +57,18 @@
                                 <a href="../manual_test_cases/" class="nav-link">Maual Testing Report</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../cicd_pipeline/" class="nav-link">CI/CD Pipeline & Deployment Flow</a>
+                                <a href="./" class="nav-link active" aria-current="page">CI/CD Pipeline & Deployment Flow</a>
                             </li>
                         </ul>
 
                     <ul class="nav navbar-nav ms-md-auto">
                             <li class="nav-item">
-                                <a rel="prev" href="../functional_doc/" class="nav-link">
+                                <a rel="prev" href="../manual_test_cases/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../database_schema/" class="nav-link">
+                                <a rel="next" class="nav-link disabled">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -90,29 +90,21 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#business-use-case-food-recipe-web-app" class="nav-link">Business Use Case — Food Recipe Web App</a>
+            <li class="nav-item" data-bs-level="1"><a href="#cicd-pipeline" class="nav-link">CI/CD Pipeline</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#problem-statement" class="nav-link">Problem Statement</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#proposed-solution" class="nav-link">Proposed Solution</a>
+            <li class="nav-item" data-bs-level="2"><a href="#sast-static-application-security-testing" class="nav-link">SAST (Static Application Security Testing)</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#target-audience" class="nav-link">Target Audience</a>
+            <li class="nav-item" data-bs-level="2"><a href="#dast-dynamic-application-security-testing" class="nav-link">DAST (Dynamic Application Security Testing)</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#business-impact" class="nav-link">Business Impact</a>
+            <li class="nav-item" data-bs-level="2"><a href="#cicd-pipeline-overview" class="nav-link">CI/CD Pipeline Overview</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#competitive-advantage" class="nav-link">Competitive Advantage</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#summary" class="nav-link">Summary</a>
+            <li class="nav-item" data-bs-level="2"><a href="#automated-testcases" class="nav-link">Automated Testcases</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -123,73 +115,31 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="business-use-case-food-recipe-web-app">Business Use Case — Food Recipe Web App</h1>
-<h2 id="problem-statement">Problem Statement</h2>
-<p>Home cooks and food enthusiasts often struggle to:</p>
-<ul>
-<li>Save and organize personal recipes digitally.</li>
-<li>Edit and update recipes easily.</li>
-<li>Access reliable, ingredient-based recipe searches.</li>
-<li>Manage cooking history or share collections privately.</li>
-</ul>
+<h1 id="cicd-pipeline">CI/CD Pipeline</h1>
+<h2 id="sast-static-application-security-testing">SAST (Static Application Security Testing)</h2>
+<p>SAST analyzes the application source code to detect security vulnerabilities during development. Semgrep is used for both the frontend and backend to identify insecure patterns and dependency risks before deployment.</p>
+<h3 id="sast-for-frontend-semgrep">SAST for Frontend (Semgrep)</h3>
+<p><img alt="SAST Frontend Screenshot" src="../sastf.png" /></p>
+<h3 id="sast-for-backend-semgrep">SAST for Backend (Semgrep)</h3>
+<p><img alt="SAST Backend Screenshot" src="../sast2.png" /></p>
 <hr />
-<h2 id="proposed-solution">Proposed Solution</h2>
-<p>This web app allows users to:</p>
-<ul>
-<li>Create and manage their own digital recipe book.</li>
-<li>Upload images, list ingredients, and write cooking steps.</li>
-<li>Securely log in to store personal recipes.</li>
-<li>Share or view recipes from others (public access).</li>
-</ul>
+<h2 id="dast-dynamic-application-security-testing">DAST (Dynamic Application Security Testing)</h2>
+<p>DAST performs security testing on the live application to detect runtime vulnerabilities. It scans deployed endpoints to identify issues such as authentication weaknesses, injection risks, and server misconfigurations.</p>
+<h3 id="dast-screenshot">DAST Screenshot</h3>
+<p><img alt="DAST Screenshot" src="../dast.png" /></p>
 <hr />
-<h2 id="target-audience">Target Audience</h2>
-<ul>
-<li>Home cooks  </li>
-<li>Food bloggers and content creators  </li>
-<li>Restaurants or cooking schools  </li>
-<li>Culinary learners  </li>
-</ul>
-<!-- ---
-
-## Monetization Opportunities
-
-| Model | Description |
-|--------|-------------|
-| Freemium Model | Free for basic users; premium for features like cloud sync, meal planner, or grocery integration. |
-| Affiliate Marketing | Integrate grocery APIs (Amazon, BigBasket) — earn commission when users buy ingredients. |
-| Creator Platform | Food bloggers can upload premium recipes; the platform earns a small percentage. |
-| Restaurant SaaS | Subscription model for restaurants to manage internal recipe documentation. |
-| Ad Revenue | Display food or kitchen-related ads for free users. | -->
-
+<h2 id="cicd-pipeline-overview">CI/CD Pipeline Overview</h2>
+<p>The CI/CD pipeline automates the workflow of building, testing, scanning, and deploying the application. It runs on every push and pull request to ensure code quality, security checks, and smooth deployment. The pipeline is implemented using GitHub Actions.</p>
+<h3 id="cicd-pipeline-screenshot">CI/CD Pipeline Screenshot</h3>
+<p>A screenshot of the pipeline execution showing automated steps and deployment status.</p>
+<p><img alt="CI-CD Pipeline" src="../cicd.png" /></p>
 <hr />
-<h2 id="business-impact">Business Impact</h2>
-<table>
-<thead>
-<tr>
-<th>Metric</th>
-<th>Impact</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>User Engagement</strong></td>
-<td>Increased time spent on the app through interactive recipe creation.</td>
-</tr>
-<tr>
-<td><strong>Data Insights</strong></td>
-<td>Ingredient trends useful for grocery and appliance brands.</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="competitive-advantage">Competitive Advantage</h2>
-<p>Unlike YouTube, which focuses on videos, this app emphasizes interactive recipe management.<br />
-Users can create, edit, and organize their own recipes, something YouTube doesn’t offer.<br />
-It’s personalized, searchable, and private.</p>
-<hr />
-<h2 id="summary">Summary</h2>
-<p>The Food Recipe Web App combines user convenience, business scalability, and technical depth.<br />
-It’s designed not just as a personal utility but as a platform that can grow into a community-based recipe ecosystem.</p></div>
+<h2 id="automated-testcases">Automated Testcases</h2>
+<p>Automated testcases validate the core functionality of the application before deployment. Unit tests are executed using Jest, and results are evaluated for reliability and stability.</p>
+<h3 id="testcase-screenshots">Testcase Screenshots</h3>
+<p><img alt="Testcase Screenshot Auth" src="../auth.png" /><br />
+<img alt="Testcase Screenshot Recipe" src="../recipe.png" /><br />
+<img alt="Testcase Screenshot User" src="../user.png" /></p></div>
             </div>
         </div>
 
