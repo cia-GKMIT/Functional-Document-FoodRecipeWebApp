@@ -9,6 +9,8 @@ nav:
   - Database Schema: database_schema.md
   - Technical Document: technical_document.md
   - Test Plan : testplan.md
+  - Maual Testing Report : manual_test_cases.md
+  - CI/CD Pipeline & Deployment Flow: cicd_pipeline.md
 
 theme:
   name: mkdocs

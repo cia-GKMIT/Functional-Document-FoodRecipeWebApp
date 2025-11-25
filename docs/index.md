@@ -12,6 +12,7 @@ It enables users to create, edit, and manage cooking recipes with image uploads.
 - [Technical Requirement](technical_document.md)
 - [Test Plan](testplan.md)
 - [Manual Test cases](manual_test_cases.md)
+- [CI/CD Pipeline & Deployment Flow](cicd_pipeline.md)
 
 ## Objective
 To build a user-friendly web application that allows secure recipe management and image uploads using a scalable backend and responsive frontend.
